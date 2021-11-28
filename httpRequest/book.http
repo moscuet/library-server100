@@ -1,0 +1,45 @@
+
+GET http://localhost:3000/api/v1/movies/ HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/v1/movies/ HTTP/1.1
+content-type: application/json
+
+{   
+    "ISBN": "978-7-6645-2127-1",
+    "title":"Book1",
+    "publisherName":"annad prokashani",
+    "author":"a26a53c2-9e2c-461d-8ae5-597a7ef50172",
+    "publishedYear":"1952",
+    "genres":["action"],
+    "description":"description",
+    "edition":"third edition",
+    "pageCount":"120"
+}
+###
+DELETE http://localhost:3000/api/v1/movies/61a0c2c83402300952f6ca45 HTTP/1.1
+
+###
+GET http://localhost:3000/api/v1/movies/61a04f943402300952f6ca31 HTTP/1.1
+
+### 
+
+PUT http://localhost:3000/api/v1/movies/619f72c0ccb63a69fdd651fb HTTP/1.1
+content-type: application/json
+
+{   
+    "ISBN": "978-7-6645-2127-0",
+    "title":"Book111",
+    "publisherName":"annad prokashani",
+    "authorName":"rahman",
+    "publishedYear":"1952",
+    "genres":["action"],
+    "description":"description",
+    "edition":"third edition",
+    "pageCount":"120"
+}
+
+###
+
+DELETE http://localhost:3000/api/v1/movies/all HTTP/1.1

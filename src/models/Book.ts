@@ -2,35 +2,52 @@
 import mongoose, { Document } from 'mongoose'
 
 export type MovieDocument = Document & {
-  name: string
+  ISBN: string
+  title: string
+  publisherName: string
+  authorName: string[]
   publishedYear: number
   genres: string[]
-  duration: number
-  rating: number
-  characters: string[]
+  description: string
+  edition: string
+  pageCount: number
 }
-
 const movieSchema = new mongoose.Schema({
-  name: {
+  ISBN: {
     type: String,
     index: true,
+    required: true,
   },
+  title: {
+    type: String,
+    required: true,
+    // maxLength:99
+  },
+  publisherName: String,
+
+  authorName: {
+    type: String,
+    required: true,
+    // maxLength:55
+  },
+
   publishedYear: {
     type: Number,
     required: true,
     min: 1900,
   },
+
   genres: [String],
-  duration: {
+  description: {
+    type: String,
+    maxLength: 255,
+  },
+  edition: String,
+  pageCount: {
     type: Number,
     required: true,
-    min: 1,
+    min: 2,
   },
-  rating: {
-    type: Number,
-    min: 0,
-  },
-  characters: [String],
 })
 
 export default mongoose.model<MovieDocument>('Movie', movieSchema)

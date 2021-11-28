@@ -1,0 +1,32 @@
+
+GET http://localhost:3000/api/v1/borrows/ HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/v1/borrows/ HTTP/1.1
+content-type: application/json
+
+{ 
+  "ISBN": "978-7-6645-2127-1",
+  "customerId" : "a7aaf94c-9152-465c-92d4-4722c81d0cb2" 
+}
+
+###
+DELETE http://localhost:3000/api/v1/borrows/61a19c4a40b5823475660f45 HTTP/1.1
+
+###
+GET http://localhost:3000/api/v1/borrows/61a1962d40b5823475660f31 HTTP/1.1
+
+### 
+PUT http://localhost:3000/api/v1/borrows/61a1962d40b5823475660f31 HTTP/1.1
+content-type: application/json
+
+{ 
+  "ISBN": "978-7-6645-2127-0",
+  "useriId" : "a7aaf94c-9152-465c-92d4-4722c81d0cb2" 
+}
+
+###
+
+DELETE http://localhost:3000/api/v1/borrows/all HTTP/1.1
+

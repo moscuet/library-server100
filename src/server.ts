@@ -25,6 +25,7 @@ mongoose
     })
   })
   .catch((err: Error) => {
+    //console.log(app.get('port'),app.get('env'))
     console.log(
       'MongoDB connection error. Please make sure MongoDB is running. ' + err
     )

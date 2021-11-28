@@ -1,28 +1,27 @@
 import { Request, Response, NextFunction } from 'express'
+import { v4 as uuidv4 } from 'uuid'
 
-import Movie from '../models/Movie'
-import MovieService from '../services/movie'
+import Author from '../models/Author'
+import AuthorService from '../services/author'
 import { BadRequestError } from '../helpers/apiError'
 
-// POST /movies
-export const createMovie = async (
+// POST /Authors
+export const createAuthor = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const { name, publishedYear, genres, duration, characters } = req.body
+    const { firstName, lastName, biography } = req.body
 
-    const movie = new Movie({
-      name,
-      publishedYear,
-      genres,
-      duration,
-      characters,
+    const author = new Author({
+      _id: uuidv4(),
+      firstName,
+      lastName,
+      biography,
     })
-
-    await MovieService.create(movie)
-    res.json(movie)
+    await AuthorService.create(author)
+    res.json(author)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -32,17 +31,18 @@ export const createMovie = async (
   }
 }
 
-// PUT /movies/:movieId
-export const updateMovie = async (
+// PUT /Authors/:AuthorId
+export const updateAuthor = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const update = req.body
-    const movieId = req.params.movieId
-    const updatedMovie = await MovieService.update(movieId, update)
-    res.json(updatedMovie)
+    const authorId = req.params.authorId
+    console.log(authorId)
+    const updatedAuthor = await AuthorService.update(authorId, update)
+    res.json(updatedAuthor)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -52,14 +52,16 @@ export const updateMovie = async (
   }
 }
 
-// DELETE /movies/:movieId
-export const deleteMovie = async (
+//##################
+
+// DELETE /Authors/:AuthorId
+export const deleteAuthor = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    await MovieService.deleteMovie(req.params.movieId)
+    await AuthorService.deleteAuthor(req.params.authorId)
     res.status(204).end()
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
@@ -70,14 +72,14 @@ export const deleteMovie = async (
   }
 }
 
-// GET /movies/:movieId
+// GET /Authors/:AuthorId
 export const findById = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    res.json(await MovieService.findById(req.params.movieId))
+    res.json(await AuthorService.findById(req.params.authorId))
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -87,14 +89,33 @@ export const findById = async (
   }
 }
 
-// GET /movies
+// GET /Authors
 export const findAll = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    res.json(await MovieService.findAll())
+    res.json(await AuthorService.findAll())
+  } catch (error) {
+    if (error instanceof Error && error.name == 'ValidationError') {
+      next(new BadRequestError('Invalid Request', error))
+    } else {
+      next(error)
+    }
+  }
+}
+
+// Delete All Author
+
+export const deleteAll = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    await AuthorService.deleteAll()
+    res.status(204).end()
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))

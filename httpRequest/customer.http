@@ -1,0 +1,35 @@
+
+GET http://localhost:3000/api/v1/customers/ HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/v1/customers/ HTTP/1.1
+content-type: application/json
+
+{ 
+  "firstName": "md",
+  "lastName": "jabbar",
+    "email": "string ",
+    "phoneNumber": "129",
+    "address": "string"
+}
+
+###
+DELETE http://localhost:3000/api/v1/customers/97c1b444-1092-4949-87e8-59f5a6692d12 HTTP/1.1
+
+###
+GET http://localhost:3000/api/v1/customers/0f01de7b-3a1e-4958-af02-0d64b86dfcc4 HTTP/1.1
+
+### 
+
+PUT http://localhost:3000/api/v1/customers/0f01de7b-3a1e-4958-af02-0d64b86dfcc4 HTTP/1.1
+content-type: application/json
+
+{ 
+  "firstName": "Mostafizur",
+  "lastName": "abdur-rahman",
+}
+
+###
+
+DELETE http://localhost:3000/api/v1/customers/all HTTP/1.1
