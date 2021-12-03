@@ -32,21 +32,22 @@ export const createCustomer = async (
       address,
       password,
     })
-    const emailCount = await Customer.countDocuments({ email })
-    if (emailCount) {
-      res.status(409).json({
-        status: 'duplicate email',
-        statusCode: 409,
-        message: 'duplicate email',
-      })
-      return
-    }
+    // one way to check if email already registered
+    // const emailCount = await Customer.countDocuments({ email })
+
     await CustomerService.create(customer)
     res.set('Access-Control-Allow-Origin', '*')
     res.json(customer)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
+    } else if (error instanceof Error && error.message.indexOf('11000')) {
+      res.status(409).json({
+        status: 'duplicate email',
+        statusCode: 409,
+        message: `Email ${email} already registered`,
+      })
+      return
     } else {
       next(error)
     }
@@ -72,8 +73,6 @@ export const updateCustomer = async (
     }
   }
 }
-
-// //##################
 
 // DELETE /Customers/:customerId
 export const deleteCustomer = async (
@@ -110,8 +109,6 @@ export const findById = async (
     }
   }
 }
-
-//#############
 
 //GET /Customers
 export const findAll = async (
