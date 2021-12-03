@@ -1,18 +1,21 @@
 /* eslint-disable @typescript-eslint/member-delimiter-style */
 import mongoose, { Document } from 'mongoose'
 
-export type MovieDocument = Document & {
+import * as author from './Author'
+
+export type BookDocument = Document & {
   ISBN: string
   title: string
   publisherName: string
-  authorName: string[]
+  authors: string[]
   publishedYear: number
   genres: string[]
   description: string
   edition: string
   pageCount: number
 }
-const movieSchema = new mongoose.Schema({
+
+const bookSchema = new mongoose.Schema({
   ISBN: {
     type: String,
     index: true,
@@ -21,15 +24,12 @@ const movieSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
-    // maxLength:99
   },
   publisherName: String,
 
-  authorName: {
-    type: String,
-    required: true,
-    // maxLength:55
-  },
+  authors: [
+    { type: mongoose.Schema.Types.ObjectId, ref: 'Author', required: true },
+  ],
 
   publishedYear: {
     type: Number,
@@ -50,4 +50,26 @@ const movieSchema = new mongoose.Schema({
   },
 })
 
-export default mongoose.model<MovieDocument>('Movie', movieSchema)
+export default mongoose.model<BookDocument>('Book', bookSchema)
+
+// ISBN: string
+// title: string
+// publisherName: string
+// author: string[]
+// publishedYear: number
+// genres: string[]
+// description: string
+// edition: string
+// pageCount: number
+
+// export type movieType = {
+//   ISBN: string
+//   title: string
+//   publisherName: string
+//   authorId: string[]
+//   publishedYear: number
+//   genres: string[]
+//   description: string
+//   edition: string
+//   pageCount: number
+// }

@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from 'express'
 
-import Movie from '../models/Book'
-import MovieService from '../services/book'
+import Book from '../models/Book'
+import BookService from '../services/book'
 import { BadRequestError } from '../helpers/apiError'
 
-// POST /movies
-export const createMovie = async (
+// POST /books
+export const createBook = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -15,7 +15,7 @@ export const createMovie = async (
       ISBN,
       title,
       publisherName,
-      authorName,
+      author,
       publishedYear,
       genres,
       description,
@@ -23,11 +23,11 @@ export const createMovie = async (
       pageCount,
     } = req.body
 
-    const movie = new Movie({
+    const book = new Book({
       ISBN,
       title,
       publisherName,
-      authorName,
+      authors: author.split(','),
       publishedYear,
       genres,
       description,
@@ -35,8 +35,8 @@ export const createMovie = async (
       pageCount,
     })
 
-    await MovieService.create(movie)
-    res.json(movie)
+    await BookService.create(book)
+    res.json(book)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -46,17 +46,17 @@ export const createMovie = async (
   }
 }
 
-// PUT /movies/:movieId
-export const updateMovie = async (
+// PUT /books/:bookId
+export const updateBook = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
     const update = req.body
-    const movieId = req.params.movieId
-    const updatedMovie = await MovieService.update(movieId, update)
-    res.json(updatedMovie)
+    const bookId = req.params.bookId
+    const updatedBook = await BookService.update(bookId, update)
+    res.json(updatedBook)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -68,14 +68,14 @@ export const updateMovie = async (
 
 //##################
 
-// DELETE /movies/:movieId
-export const deleteMovie = async (
+// DELETE /books/:bookId
+export const deleteBook = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    await MovieService.deleteMovie(req.params.movieId)
+    await BookService.deleteBook(req.params.bookId)
     res.status(204).end()
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
@@ -86,14 +86,14 @@ export const deleteMovie = async (
   }
 }
 
-// GET /movies/:movieId
+// GET /books/:bookId
 export const findById = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    res.json(await MovieService.findById(req.params.movieId))
+    res.json(await BookService.findById(req.params.bookId))
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
@@ -103,14 +103,14 @@ export const findById = async (
   }
 }
 
-// GET /movies
+// GET /books
 export const findAll = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    res.json(await MovieService.findAll())
+    res.json(await BookService.findAll())
   } catch (error) {
     console.log('error')
     if (error instanceof Error && error.name == 'ValidationError') {
@@ -121,7 +121,27 @@ export const findAll = async (
   }
 }
 
-// Delete All Movie
+//
+
+export const findAllAndPopulate = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  console.log('22222222222222 controller')
+  try {
+    res.json(await BookService.findAllAndPopulate())
+  } catch (error) {
+    console.log('error')
+    if (error instanceof Error && error.name == 'ValidationError') {
+      next(new BadRequestError('Invalid Request', error))
+    } else {
+      next(error)
+    }
+  }
+}
+
+// Delete All Book
 
 export const deleteAll = async (
   req: Request,
@@ -129,7 +149,7 @@ export const deleteAll = async (
   next: NextFunction
 ) => {
   try {
-    await MovieService.deleteAll()
+    await BookService.deleteAll()
     res.status(204).end()
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {

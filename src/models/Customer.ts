@@ -1,7 +1,3 @@
-// userID : string
-// firstName : string varchar (55) lastName : string varchar (55) email: string phoneNumber:int
-// address: varchar(255)
-
 /* eslint-disable @typescript-eslint/member-delimiter-style */
 import mongoose, { Document } from 'mongoose'
 import { v4 as uuidv4 } from 'uuid'
@@ -13,6 +9,7 @@ export type CustomerDocument = Document & {
   email: string
   phoneNumber: number
   address: string
+  password: string
 }
 
 const customerSchema = new mongoose.Schema({
@@ -30,12 +27,17 @@ const customerSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    // trim: true,
-    // lowercase: true,
-    // unique: true,
-    // required: 'Email address is required'
+    trim: true,
+    lowercase: true,
+    required: 'Email address is required',
+    match: [
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      'Please fill a valid email address',
+    ],
   },
   phoneNumber: Number,
   address: String,
+  password: String,
 })
+
 export default mongoose.model<CustomerDocument>('Customer', customerSchema)

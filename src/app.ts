@@ -3,16 +3,21 @@ import lusca from 'lusca'
 import dotenv from 'dotenv'
 import compression from 'compression'
 
+import cors from 'cors'
+
 import movieRouter from './routers/book'
 import authorRouter from './routers/author'
 import customerRouter from './routers/customer'
 import borrowRouter from './routers/borrow'
+import authRouter from './routers/authentication'
 
 import apiErrorHandler from './middlewares/apiErrorHandler'
 import apiContentType from './middlewares/apiContentType'
 
 dotenv.config({ path: '.env' })
 const app = express()
+
+app.use(cors())
 
 // Express configuration
 app.set('port', process.env.PORT || 3000)
@@ -24,12 +29,15 @@ app.use(lusca.xframe('SAMEORIGIN'))
 app.use(lusca.xssProtection(true))
 
 // Use movie router
-app.use('/api/v1/movies', movieRouter)
-app.use('/api/v1/customers', customerRouter)
-app.use('/api/v1/borrows', borrowRouter)
-app.use('/api/v1/authors', authorRouter)
+app.use('/api/customers', customerRouter)
+app.use('/api/borrows', borrowRouter)
+app.use('/api/books', movieRouter)
+app.use('/api/auths', authRouter)
+app.use('/api/authors', authorRouter)
 
 // Custom API error handler
 app.use(apiErrorHandler)
 
 export default app
+
+//API_URL + "signup", { firstName, lastName, email, phoneNumber, address, password }

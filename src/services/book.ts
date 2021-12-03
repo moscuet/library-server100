@@ -1,51 +1,58 @@
-import Movie, { MovieDocument } from '../models/Book'
+import Book, { BookDocument } from '../models/Book'
 import { NotFoundError } from '../helpers/apiError'
 
-const create = async (movie: MovieDocument): Promise<MovieDocument> => {
-  return movie.save()
+const create = async (book: BookDocument): Promise<BookDocument> => {
+  return book.save()
 }
 
-const findById = async (movieId: string): Promise<MovieDocument> => {
-  const foundMovie = await Movie.findById(movieId)
+const findById = async (bookId: string): Promise<BookDocument> => {
+  const foundBook = await Book.findById(bookId)
 
-  if (!foundMovie) {
-    throw new NotFoundError(`Movie ${movieId} not found`)
+  if (!foundBook) {
+    throw new NotFoundError(`Book ${bookId} not found`)
   }
 
-  return foundMovie
+  return foundBook
 }
 
-const findAll = async (): Promise<MovieDocument[]> => {
-  return Movie.find().sort({ name: 1, publishedYear: -1 })
+const findAll = async (): Promise<BookDocument[]> => {
+  return Book.find().sort({ name: 1, publishedYear: -1 })
+  // return Book.find().sort({ name: 1, publishedYear: -1 })
 }
 
-const deleteAll = async (): Promise<MovieDocument[] | null> => {
-  return Movie.remove({})
+const findAllAndPopulate = async (): Promise<BookDocument[]> => {
+  console.log('findall populate service')
+  return Book.find().sort({ name: 1, publishedYear: -1 }).populate('authors')
+  // return Book.find().sort({ name: 1, publishedYear: -1 })
+}
+
+const deleteAll = async (): Promise<BookDocument[] | null> => {
+  return Book.remove({})
 }
 
 const update = async (
-  movieId: string,
-  update: Partial<MovieDocument>
-): Promise<MovieDocument | null> => {
-  const foundMovie = await Movie.findByIdAndUpdate(movieId, update, {
+  bookId: string,
+  update: Partial<BookDocument>
+): Promise<BookDocument | null> => {
+  const foundBook = await Book.findByIdAndUpdate(bookId, update, {
     new: true,
   })
 
-  if (!foundMovie) {
-    throw new NotFoundError(`Movie ${movieId} not found`)
+  if (!foundBook) {
+    throw new NotFoundError(`Book ${bookId} not found`)
   }
 
-  return foundMovie
+  return foundBook
 }
 
-const deleteMovie = async (movieId: string): Promise<MovieDocument | null> => {
-  const foundMovie = Movie.findByIdAndDelete(movieId)
+const deleteBook = async (bookId: string): Promise<BookDocument | null> => {
+  const foundBook = Book.findByIdAndDelete(bookId)
 
-  if (!foundMovie) {
-    throw new NotFoundError(`Movie ${movieId} not found`)
+  if (!foundBook) {
+    throw new NotFoundError(`Book ${bookId} not found`)
   }
 
-  return foundMovie
+  return foundBook
 }
 
 export default {
@@ -54,5 +61,6 @@ export default {
   findAll,
   deleteAll,
   update,
-  deleteMovie,
+  deleteBook,
+  findAllAndPopulate,
 }

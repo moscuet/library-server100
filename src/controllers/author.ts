@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { v4 as uuidv4 } from 'uuid'
-
+import mongoose from 'mongoose'
 import Author from '../models/Author'
 import AuthorService from '../services/author'
 import { BadRequestError } from '../helpers/apiError'
@@ -15,7 +15,6 @@ export const createAuthor = async (
     const { firstName, lastName, biography } = req.body
 
     const author = new Author({
-      _id: uuidv4(),
       firstName,
       lastName,
       biography,

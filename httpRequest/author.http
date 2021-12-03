@@ -1,9 +1,9 @@
 
-GET http://localhost:3000/api/v1/authors/ HTTP/1.1
+GET http://localhost:3001/api/authors/ HTTP/1.1
 
 ###
 
-POST http://localhost:3000/api/v1/authors/ HTTP/1.1
+POST http://localhost:3001/api/authors/ HTTP/1.1
 content-type: application/json
 
 { 
@@ -13,14 +13,14 @@ content-type: application/json
 }
 
 ###
-DELETE http://localhost:3000/api/v1/authors/f2a83514-c49e-44fd-828b-8a2d0d4cfc4d HTTP/1.1
+DELETE http://localhost:3001/api/authors/f2a83514-c49e-44fd-828b-8a2d0d4cfc4d HTTP/1.1
 
 ###
-GET http://localhost:3000/api/v1/authors/76505d0b-40d3-4dbe-b408-352be1d0dca6 HTTP/1.1
+GET http://localhost:3001/api/authors/76505d0b-40d3-4dbe-b408-352be1d0dca6 HTTP/1.1
 
 ### 
 
-PUT http://localhost:3000/api/v1/authors/ec9c5620-9225-4afe-9774-f44bed82c482 HTTP/1.1
+PUT http://localhost:3001/api/authors/ec9c5620-9225-4afe-9774-f44bed82c482 HTTP/1.1
 content-type: application/json
 
 { 
@@ -31,4 +31,8 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/v1/authors/all HTTP/1.1
+DELETE http://localhost:3001/api/authors/all HTTP/1.1
+
+###
+
+

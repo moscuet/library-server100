@@ -11,19 +11,38 @@ export const createCustomer = async (
   res: Response,
   next: NextFunction
 ) => {
+  const { firstName, lastName, email, phoneNumber, address, password } =
+    req.body
+  console.log(
+    'data from cont/customer/createcustomer',
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    address,
+    password
+  )
   try {
-    const { firstName, lastName, email, phoneNumber, address } = req.body
-
     const customer = new Customer({
       _id: uuidv4(),
       firstName,
       lastName,
       email,
-      phoneNumber,
+      phoneNumber: Number(phoneNumber),
       address,
+      password,
     })
-
+    const emailCount = await Customer.countDocuments({ email })
+    if (emailCount) {
+      res.status(409).json({
+        status: 'duplicate email',
+        statusCode: 409,
+        message: 'duplicate email',
+      })
+      return
+    }
     await CustomerService.create(customer)
+    res.set('Access-Control-Allow-Origin', '*')
     res.json(customer)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {

@@ -1,17 +1,18 @@
 
-GET http://localhost:3000/api/v1/customers/ HTTP/1.1
+GET http://localhost:3001/api/customers/ HTTP/1.1
 
 ###
 
-POST http://localhost:3000/api/v1/customers/ HTTP/1.1
+POST http://localhost:3001/api/auths/signup HTTP/1.1
 content-type: application/json
 
 { 
   "firstName": "md",
-  "lastName": "jabbar",
-    "email": "string ",
-    "phoneNumber": "129",
-    "address": "string"
+  "lastName": "rahim",
+  "email": "sttfgtrooooin888jnkxx@gmail.io",
+  "phoneNumber": "129",
+  "address": "string",
+  "password": "dksfjdlskfjd"
 }
 
 ###
@@ -32,4 +33,4 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/v1/customers/all HTTP/1.1
+DELETE http://localhost:3001/api/customers/all HTTP/1.1

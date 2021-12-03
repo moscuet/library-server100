@@ -1,7 +1,6 @@
 import express from 'express'
 
 import {
-  createCustomer,
   findById,
   deleteCustomer,
   findAll,
@@ -22,6 +21,5 @@ router.put('/:customerId', updateCustomer)
 router.delete('/all', deleteAll)
 
 router.delete('/:customerId', deleteCustomer)
-router.post('/', createCustomer)
 
 export default router
