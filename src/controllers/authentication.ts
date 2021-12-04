@@ -62,15 +62,8 @@ export const signup = async (
   res: Response,
   next: NextFunction
 ) => {
-  const {
-    firstName,
-    lastName,
-    useremail,
-    phoneNumber,
-    address,
-    password,
-    roles,
-  } = req.body
+  const { firstName, lastName, useremail, phoneNumber, address, password } =
+    req.body
   console.log('data from cont/auth/signup', firstName)
   try {
     const customer = new Customer({
@@ -81,16 +74,19 @@ export const signup = async (
       phoneNumber: Number(phoneNumber),
       address,
       password: await bcrypt.hash(password, bcryptConfig.salt),
-      // roles,
     })
     console.log('customer from cont/authentication/signup', customer)
     // one way to check if email already registered: await User.findOne({ email }).exec() === true;
 
-    await CustomerService.create(customer)
+    //await CustomerService.create(customer)
+    await customer.save()
     res.set('Access-Control-Allow-Origin', '*')
     res.json(customer)
+    console.log('closing signup')
   } catch (error) {
+    console.log('signup error')
     if (error instanceof Error && error.name == 'ValidationError') {
+      console.log('signup error', error.message)
       next(new BadRequestError('Invalid Request', error))
     } else if (error instanceof Error && error.message.indexOf('11000')) {
       res.status(401).json({

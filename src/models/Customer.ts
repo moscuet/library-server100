@@ -10,8 +10,8 @@ export type TCustomer = {
   phoneNumber: number
   address: string
   password: string
-  // roles: mongoose.ObjectId[]
 }
+// roles: mongoose.ObjectId[]
 
 export type CustomerDocument = Document & TCustomer
 
@@ -32,6 +32,7 @@ const customerSchema = new mongoose.Schema({
     type: String,
     trim: true,
     lowercase: true,
+    unique: true,
     required: 'Email address is required',
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -44,7 +45,7 @@ const customerSchema = new mongoose.Schema({
     type: String,
     required: 'Passwordr equired',
   },
-  // roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }],
 })
+// roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }],
 
 export default mongoose.model<CustomerDocument>('Customer', customerSchema)
