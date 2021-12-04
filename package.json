@@ -30,6 +30,7 @@
     "@types/lusca": "^1.7.0",
     "@types/mongodb": "^4.0.7",
     "axios": "^0.24.0",
+    "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
@@ -52,6 +53,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/concurrently": "^4.1.1",
     "@types/cors": "^2.8.12",
     "@types/errorhandler": "^0.0.32",

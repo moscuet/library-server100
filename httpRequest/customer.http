@@ -1,19 +1,18 @@
 
-GET http://localhost:3001/api/customers/ HTTP/1.1
+GET http://localhost:3002/api/customers/ HTTP/1.1
 
 ###
 
-POST http://localhost:3001/api/auths/signup HTTP/1.1
+POST http://localhost:3002/api/auths/signup HTTP/1.1
 content-type: application/json
 
 { 
-  "firstName": "md",
+  "firstName": "uu",
   "lastName": "rahim",
-  "email": "sttfroo888jnkxx@gmail.io",
+  "email": "sttfroo888kxx@gmail.io",
   "phoneNumber": "129",
   "address": "string",
-  "password": "dksfjdlskfjd",
-  "roles":["admin"]
+  "password": "dksfjdlskfjd"
 }
 
 ###

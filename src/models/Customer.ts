@@ -2,16 +2,18 @@
 import mongoose, { Document } from 'mongoose'
 import { v4 as uuidv4 } from 'uuid'
 
-export type CustomerDocument = Document & {
+export type TCustomer = {
   _id: mongoose.ObjectId
   firstName: string
   lastName: string
-  email: string
+  useremail: string
   phoneNumber: number
   address: string
   password: string
   roles: mongoose.ObjectId[]
 }
+
+export type CustomerDocument = Document & TCustomer
 
 const customerSchema = new mongoose.Schema({
   _id: {
@@ -26,7 +28,7 @@ const customerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  email: {
+  useremail: {
     type: String,
     trim: true,
     lowercase: true,
@@ -38,7 +40,10 @@ const customerSchema = new mongoose.Schema({
   },
   phoneNumber: Number,
   address: String,
-  password: String,
+  password: {
+    type: String,
+    required: 'Passwordrequired',
+  },
   roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }],
 })
 
