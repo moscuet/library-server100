@@ -2,8 +2,8 @@ import express from 'express'
 import lusca from 'lusca'
 import dotenv from 'dotenv'
 import compression from 'compression'
-
 import cors from 'cors'
+import bodyparser from 'body-parser'
 
 import movieRouter from './routers/book'
 import authorRouter from './routers/author'
@@ -18,6 +18,12 @@ dotenv.config({ path: '.env' })
 const app = express()
 
 app.use(cors())
+
+// parse application/json
+app.use(express.json())
+
+// parse application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }))
 
 // Express configuration
 app.set('port', process.env.PORT || 3000)

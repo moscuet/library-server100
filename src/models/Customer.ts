@@ -10,6 +10,7 @@ export type CustomerDocument = Document & {
   phoneNumber: number
   address: string
   password: string
+  roles: mongoose.ObjectId[]
 }
 
 const customerSchema = new mongoose.Schema({
@@ -38,6 +39,7 @@ const customerSchema = new mongoose.Schema({
   phoneNumber: Number,
   address: String,
   password: String,
+  roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }],
 })
 
 export default mongoose.model<CustomerDocument>('Customer', customerSchema)

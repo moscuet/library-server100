@@ -9,10 +9,11 @@ content-type: application/json
 { 
   "firstName": "md",
   "lastName": "rahim",
-  "email": "sttfgtrooooin888jnkxx@gmail.io",
+  "email": "sttfroo888jnkxx@gmail.io",
   "phoneNumber": "129",
   "address": "string",
-  "password": "dksfjdlskfjd"
+  "password": "dksfjdlskfjd",
+  "roles":["admin"]
 }
 
 ###

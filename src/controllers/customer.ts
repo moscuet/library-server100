@@ -5,55 +5,6 @@ import Customer from '../models/Customer'
 import CustomerService from '../services/customer'
 import { BadRequestError } from '../helpers/apiError'
 
-// POST /Customers
-export const createCustomer = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const { firstName, lastName, email, phoneNumber, address, password } =
-    req.body
-  console.log(
-    'data from cont/customer/createcustomer',
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-    address,
-    password
-  )
-  try {
-    const customer = new Customer({
-      _id: uuidv4(),
-      firstName,
-      lastName,
-      email,
-      phoneNumber: Number(phoneNumber),
-      address,
-      password,
-    })
-    // one way to check if email already registered
-    // const emailCount = await Customer.countDocuments({ email })
-
-    await CustomerService.create(customer)
-    res.set('Access-Control-Allow-Origin', '*')
-    res.json(customer)
-  } catch (error) {
-    if (error instanceof Error && error.name == 'ValidationError') {
-      next(new BadRequestError('Invalid Request', error))
-    } else if (error instanceof Error && error.message.indexOf('11000')) {
-      res.status(409).json({
-        status: 'duplicate email',
-        statusCode: 409,
-        message: `Email ${email} already registered`,
-      })
-      return
-    } else {
-      next(error)
-    }
-  }
-}
-
 // PUT /Customers/:customerId
 export const updateCustomer = async (
   req: Request,
