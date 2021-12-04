@@ -6,6 +6,6 @@ const router = express.Router()
 
 // Every path we define here will get /api/v1/users prefix
 router.post('/signup', signup)
-// router.post('/signin', signin)
+router.post('/signin', signin)
 
 export default router

@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 import crypto from 'crypto'
 import bcrypt from 'bcrypt'
-import bcryptConfig from '../../config/bcrypt'
-import authConfig from '../../config/auth'
+import bcryptConfig from '../config/bcrypt'
+import authConfig from '../config/auth'
 
 import jwt from 'jsonwebtoken'
 import { TCustomer } from '../models/Customer'
@@ -31,9 +31,13 @@ export const signin = async (
     if (!isValidPassword)
       return res.status(401).json({ message: 'Email or Password is Wrong!' })
 
-    const accessToken = jwt.sign({ id: customer.useremail }, authConfig.secret, {
-      expiresIn: 7200,
-    })
+    const accessToken = jwt.sign(
+      { id: customer.useremail },
+      authConfig.secret,
+      {
+        expiresIn: 7200,
+      }
+    )
     const resObj = { ...customer, accessToken }
     res.status(200).send(resObj)
   } catch (error) {
