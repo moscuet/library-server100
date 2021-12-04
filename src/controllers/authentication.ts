@@ -62,20 +62,28 @@ export const signup = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { firstName, lastName, email, phoneNumber, address, password, roles } =
-    req.body
+  const {
+    firstName,
+    lastName,
+    useremail,
+    phoneNumber,
+    address,
+    password,
+    roles,
+  } = req.body
   console.log('data from cont/auth/signup', firstName)
   try {
     const customer = new Customer({
       _id: uuidv4(),
       firstName,
       lastName,
-      email,
+      useremail,
       phoneNumber: Number(phoneNumber),
       address,
       password: await bcrypt.hash(password, bcryptConfig.salt),
-      roles,
+      // roles,
     })
+    console.log('customer from cont/authentication/signup', customer)
     // one way to check if email already registered: await User.findOne({ email }).exec() === true;
 
     await CustomerService.create(customer)
@@ -88,7 +96,7 @@ export const signup = async (
       res.status(401).json({
         status: 'duplicate email',
         statusCode: 401,
-        message: `Email ${email} already registered`,
+        message: `Email ${useremail} already registered`,
       })
       return
     } else {

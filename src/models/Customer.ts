@@ -10,7 +10,7 @@ export type TCustomer = {
   phoneNumber: number
   address: string
   password: string
-  roles: mongoose.ObjectId[]
+  // roles: mongoose.ObjectId[]
 }
 
 export type CustomerDocument = Document & TCustomer
@@ -42,9 +42,9 @@ const customerSchema = new mongoose.Schema({
   address: String,
   password: {
     type: String,
-    required: 'Passwordrequired',
+    required: 'Passwordr equired',
   },
-  roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }],
+  // roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }],
 })
 
 export default mongoose.model<CustomerDocument>('Customer', customerSchema)
