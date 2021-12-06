@@ -10,6 +10,7 @@ export type TCustomer = {
   phoneNumber: number
   address: string
   password: string
+  rolse: string[]
 }
 // roles: mongoose.ObjectId[]
 
@@ -45,6 +46,7 @@ const customerSchema = new mongoose.Schema({
     type: String,
     required: 'Passwordr equired',
   },
+  roles: [String],
 })
 // roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }],
 

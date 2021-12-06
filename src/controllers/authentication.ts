@@ -19,10 +19,11 @@ export const signin = async (
   next: NextFunction
 ) => {
   const { useremail, password } = req.body
-  console.log('data from cont/auth/signin', useremail)
+  console.log('data from cont/auth/signinnnn', useremail)
 
   try {
     const customer = await Customer.findOne({ useremail }).exec()
+    //console.log('response customer/signin', customer)
     const pass = customer ? customer.password : ''
     const isValidPassword = await bcrypt.compare(password, pass)
     if (!useremail || !password)
@@ -38,7 +39,18 @@ export const signin = async (
         expiresIn: 7200,
       }
     )
-    const resObj = { ...customer, accessToken }
+
+    const resObj = {
+      _id: customer.id,
+      firstNmae: customer.firstName,
+      lastName: customer.lastName,
+      useremail: customer.useremail,
+      phoneNumber: customer.phoneNumber,
+      address: customer.address,
+      password: customer.password,
+      accessToken,
+    }
+    //console.log('resobj',resObj)
     res.status(200).send(resObj)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
