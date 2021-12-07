@@ -48,6 +48,7 @@ export const signin = async (
       phoneNumber: customer.phoneNumber,
       address: customer.address,
       password: customer.password,
+      roles: customer.rolse,
       accessToken,
     }
     //console.log('resobj',resObj)
