@@ -7,12 +7,13 @@ POST http://localhost:3002/api/auths/signup HTTP/1.1
 content-type: application/json
 
 { 
-  "firstName": "jamalll",
-  "lastName": "rahimmm",
-  "useremail": "srth@gmail.io",
-  "phoneNumber": "129",
-  "address": "stringkkk",
-  "password": "dksfjdmmmlskfjd"
+  "firstName": "Nicolas",
+  "lastName": "Ray",
+  "useremail": "admin@gmail.com",
+  "phoneNumber": "1293123123",
+  "address": "adresss",
+  "password": "asdfgh",
+  "roles":"admin"
 }
 
 ###

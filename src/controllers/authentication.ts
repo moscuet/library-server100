@@ -48,7 +48,7 @@ export const signin = async (
       phoneNumber: customer.phoneNumber,
       address: customer.address,
       password: customer.password,
-      roles: customer.rolse,
+      roles: customer.roles,
       accessToken,
     }
     //console.log('resobj',resObj)
@@ -75,8 +75,15 @@ export const signup = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { firstName, lastName, useremail, phoneNumber, address, password } =
-    req.body
+  const {
+    firstName,
+    lastName,
+    useremail,
+    phoneNumber,
+    address,
+    password,
+    roles,
+  } = req.body
   console.log('data from cont/auth/signup', firstName)
   try {
     const customer = new Customer({
@@ -87,6 +94,7 @@ export const signup = async (
       phoneNumber: Number(phoneNumber),
       address,
       password: await bcrypt.hash(password, bcryptConfig.salt),
+      roles,
     })
     console.log('customer from cont/authentication/signup', customer)
     // one way to check if email already registered: await User.findOne({ email }).exec() === true;

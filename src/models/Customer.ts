@@ -10,7 +10,7 @@ export type TCustomer = {
   phoneNumber: number
   address: string
   password: string
-  rolse: string
+  roles: string
 }
 
 export type CustomerDocument = Document & TCustomer
