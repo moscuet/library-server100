@@ -13,6 +13,7 @@ export type BookDocument = Document & {
   description: string
   edition: string
   pageCount: number
+  img: string
 }
 
 const bookSchema = new mongoose.Schema({
@@ -48,6 +49,7 @@ const bookSchema = new mongoose.Schema({
     required: true,
     min: 2,
   },
+  img: String,
 })
 
 export default mongoose.model<BookDocument>('Book', bookSchema)

@@ -21,6 +21,7 @@ export const createBook = async (
       description,
       edition,
       pageCount,
+      img,
     } = req.body
 
     const book = new Book({
@@ -33,6 +34,7 @@ export const createBook = async (
       description,
       edition,
       pageCount,
+      img,
     })
 
     await BookService.create(book)

@@ -1,14 +1,14 @@
 
-GET http://localhost:3001/api/authors/ HTTP/1.1
+GET http://localhost:3002/api/authors/ HTTP/1.1
 
 ###
 
-POST http://localhost:3001/api/authors/ HTTP/1.1
+POST http://localhost:3002/api/authors/ HTTP/1.1
 content-type: application/json
 
 { 
-  "firstName": "Md",
-  "lastName": "khalil",
+  "firstName": "Cladis",
+  "lastName": "Chris",
   "biography": "biography"
 }
 

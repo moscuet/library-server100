@@ -1,21 +1,23 @@
+// author: 61b08a1d40793a492f239001,61a9759da3eb1c07c18c3e71, 61b08b8c40793a492f23900f
 
-GET http://localhost:3001/api/books/ HTTP/1.1
+GET http://localhost:3002/api/books/all HTTP/1.1
 
 ###
 
-POST http://localhost:3001/api/books/ HTTP/1.1
+POST http://localhost:3002/api/books/ HTTP/1.1
 content-type: application/json
 
 {   
-    "ISBN": "978-7-6645-2127-1",
-    "title":"Book1",
+    "ISBN": "978-7-6645-2127-10",
+    "title":"Book10",
     "publisherName":"annad prokashani",
-    "author":"61a3feea05eee0754aaad1e1,61a3feed05eee0754aaad1e3",
+    "author":"61a9759da3eb1c07c18c3e71",
     "publishedYear":"1952",
     "genres":["action"],
     "description":"description",
     "edition":"third edition",
-    "pageCount":"120"
+    "pageCount":"120",
+    "img":"https://images.unsplash.com/photo-1561657819-51c0511e35ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
 }
 ###
 DELETE http://localhost:3000/api/v1/movies/61a0c2c83402300952f6ca45 HTTP/1.1
@@ -42,9 +44,9 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/v1/movies/all HTTP/1.1
+DELETE http://localhost:3002/api/books/all HTTP/1.1
 
 ###
 
-GET http://localhost:3000/api/v1/movies/all HTTP/1.1
+GET http://localhost:3002/api/books/all HTTP/1.1
 

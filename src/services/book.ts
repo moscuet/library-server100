@@ -16,7 +16,7 @@ const findById = async (bookId: string): Promise<BookDocument> => {
 }
 
 const findAll = async (): Promise<BookDocument[]> => {
-  return Book.find().sort({ name: 1, publishedYear: -1 })
+  return Book.find().sort({ title: 1, publishedYear: -1 })
   // return Book.find().sort({ name: 1, publishedYear: -1 })
 }
 
