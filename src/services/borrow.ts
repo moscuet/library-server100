@@ -18,6 +18,12 @@ const findAll = async (): Promise<BorrowDocument[]> => {
   return Borrow.find().sort({ fisrtName: 1 })
 }
 
+const findByCustomerId = async (
+  customerId: string
+): Promise<BorrowDocument[]> => {
+  return Borrow.find({ customerId }).exec()
+}
+
 const deleteAll = async (): Promise<BorrowDocument[] | null> => {
   return Borrow.remove({})
 }
@@ -53,6 +59,7 @@ export default {
   create,
   findById,
   findAll,
+  findByCustomerId,
   deleteAll,
   update,
   deleteBorrow,

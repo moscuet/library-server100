@@ -5,7 +5,7 @@ import compression from 'compression'
 import cors from 'cors'
 import bodyparser from 'body-parser'
 
-import movieRouter from './routers/book'
+import bookRouter from './routers/book'
 import authorRouter from './routers/author'
 import customerRouter from './routers/customer'
 import borrowRouter from './routers/borrow'
@@ -37,7 +37,7 @@ app.use(lusca.xssProtection(true))
 // Use movie router
 app.use('/api/customers', customerRouter)
 app.use('/api/borrows', borrowRouter)
-app.use('/api/books', movieRouter)
+app.use('/api/books', bookRouter)
 app.use('/api/auths', authRouter)
 app.use('/api/authors', authorRouter)
 

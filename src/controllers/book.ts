@@ -5,6 +5,26 @@ import BookService from '../services/book'
 import { BadRequestError } from '../helpers/apiError'
 
 // POST /books
+
+export const findByQuery = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const q1 = req.query.catagory
+  console.log('catagory')
+  try {
+    res.json(await BookService.findByQuery())
+  } catch (error) {
+    console.log('error')
+    if (error instanceof Error && error.name == 'ValidationError') {
+      next(new BadRequestError('Invalid Request', error))
+    } else {
+      next(error)
+    }
+  }
+}
+
 export const createBook = async (
   req: Request,
   res: Response,
@@ -30,19 +50,26 @@ export const createBook = async (
       publisherName,
       authors: author.split(','),
       publishedYear,
-      genres,
+      genres: genres.split(','),
       description,
       edition,
       pageCount,
       img,
     })
-
+    console.log('0@@@@@@@@@@@@@@@@@', book)
     await BookService.create(book)
     res.json(book)
+    console.log('1@@@@@@@@@@@@@@@@@@@@@@@')
   } catch (error) {
+    console.log('2@@@@@@@@@@@@@@@@@@@@@@@')
+
+    //console.log('error from cont/boob/create',error)
     if (error instanceof Error && error.name == 'ValidationError') {
+      console.log('3@@@@@@@@@@@@@@@@@@@@@@@', error)
+
       next(new BadRequestError('Invalid Request', error))
     } else {
+      console.log('@@@@@@@@@@@@@@@@@@@@@@@', error)
       next(error)
     }
   }
@@ -89,13 +116,13 @@ export const deleteBook = async (
 }
 
 // GET /books/:bookId
-export const findById = async (
+export const findByIdAndPopulate = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    res.json(await BookService.findById(req.params.bookId))
+    res.json(await BookService.findByIdAndPopulate(req.params.bookId))
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))

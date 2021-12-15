@@ -2,9 +2,10 @@ import express from 'express'
 
 import {
   createBook,
-  findById,
+  findByIdAndPopulate,
   deleteBook,
   findAll,
+  findByQuery,
   findAllAndPopulate,
   updateBook,
   deleteAll,
@@ -15,9 +16,12 @@ const router = express.Router()
 // Every path we define here will get /api/v1/books prefix
 //router.get('/', findAll)
 
+router.get('/catagory', findByQuery)
+
 router.get('/all', findAllAndPopulate)
 router.get('/', findAll)
-router.get('/:bookId', findById)
+
+router.get('/:bookId', findByIdAndPopulate)
 router.put('/:bookId', updateBook)
 
 // deleteAll only for testing

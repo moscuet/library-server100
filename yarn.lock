@@ -4486,12 +4486,17 @@
   optionalDependencies:
     "saslprep" "^1.0.0"
 
+"mongoose-beautiful-unique-validation@^7.1.1":
+  "integrity" "sha512-fprzp8nY9Qjg0+RZFMl7gVmbINRt2H53fpqyjJWwPO7nxJ9RZZB/Lo3y+mXaMP4nNMOeoJb2v3dNou6h+iLh8w=="
+  "resolved" "https://registry.npmjs.org/mongoose-beautiful-unique-validation/-/mongoose-beautiful-unique-validation-7.1.1.tgz"
+  "version" "7.1.1"
+
 "mongoose-legacy-pluralize@1.0.2":
   "integrity" "sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ=="
   "resolved" "https://registry.npmjs.org/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz"
   "version" "1.0.2"
 
-"mongoose@*", "mongoose@^5.11.15":
+"mongoose@*", "mongoose@^5.11.15", "mongoose@>=4.11.4":
   "integrity" "sha512-h1tkPu/3grQjdWjoIA3uUNWvDFDcaNGwcmBLEkK9t/kzKq4L4fB2EoA/VLjQ7WGTL/pDKH6OElBTK7x/QPRvbg=="
   "resolved" "https://registry.npmjs.org/mongoose/-/mongoose-5.13.10.tgz"
   "version" "5.13.10"

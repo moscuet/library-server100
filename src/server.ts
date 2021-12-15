@@ -21,6 +21,7 @@ mongoose
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true,
+    autoIndex: true,
   })
   .then(() => {
     // Start Express server

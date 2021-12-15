@@ -3,7 +3,7 @@ import mongoose, { Document } from 'mongoose'
 import { v4 as uuidv4 } from 'uuid'
 
 export type TCustomer = {
-  _id: mongoose.ObjectId
+  _id: string
   firstName: string
   lastName: string
   useremail: string
@@ -11,6 +11,7 @@ export type TCustomer = {
   address: string
   password: string
   roles: string
+  img?: string
 }
 
 export type CustomerDocument = Document & TCustomer
@@ -50,6 +51,7 @@ const customerSchema = new mongoose.Schema({
     enum: ['user', 'moderator', 'admin'],
     default: 'user',
   },
+  img: String,
 })
 
 export default mongoose.model<CustomerDocument>('Customer', customerSchema)

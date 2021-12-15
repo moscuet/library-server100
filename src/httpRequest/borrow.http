@@ -1,14 +1,18 @@
 
-GET http://localhost:3001/api/borrows/ HTTP/1.1
+
+GET http://localhost:3002/api/borrows?customerId=283f04bf-0780-4017-981f-683d45f0daf2 HTTP/1.1
+
+###
+GET http://localhost:3002/api/borrows HTTP/1.1
 
 ###
 
-POST http://localhost:3001/api/borrows/ HTTP/1.1
+POST http://localhost:3002/api/borrows/ HTTP/1.1
 content-type: application/json
 
 { 
-  "ISBN": "978-7-6645-2127-9",
-  "customerId" : "ad55f692-9bdf-4276-9a02-3f93ccca86d5" 
+  "bookId": "61b09ce2b2e6de6bcdf29eef",
+  "customerId" : "283f04bf-0780-4017-981f-683d45f0daf2" 
 }
 
 ###
@@ -23,10 +27,10 @@ content-type: application/json
 
 { 
   "ISBN": "978-7-6645-2127-0",
-  "useriId" : "a7aaf94c-9152-465c-92d4-4722c81d0cb2" 
+  "useriId" : "6437160f-ebe0-4095-bde4-0775481acdd0" 
 }
 
 ###
 
-DELETE http://localhost:3001/api/borrows/all HTTP/1.1
+DELETE http://localhost:3002/api/borrows/all HTTP/1.1
 

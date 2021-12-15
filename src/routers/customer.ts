@@ -17,9 +17,10 @@ router.get('/', findAll)
 router.get('/:customerId', findById)
 
 router.put('/:customerId', updateCustomer)
-// deleteAll only for testing
-router.delete('/all', deleteAll)
 
 router.delete('/:customerId', deleteCustomer)
+
+// deleteAll only for testing
+router.delete('/all', deleteAll)
 
 export default router

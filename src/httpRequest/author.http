@@ -7,25 +7,25 @@ POST http://localhost:3002/api/authors/ HTTP/1.1
 content-type: application/json
 
 { 
-  "firstName": "Cladis",
-  "lastName": "Chris",
+  "firstName": "Mr",
+  "lastName": "Romey",
   "biography": "biography"
 }
 
 ###
-DELETE http://localhost:3001/api/authors/f2a83514-c49e-44fd-828b-8a2d0d4cfc4d HTTP/1.1
+DELETE http://localhost:3002/api/authors/61b8db5f21987410d36d1b9e HTTP/1.1
 
 ###
-GET http://localhost:3001/api/authors/76505d0b-40d3-4dbe-b408-352be1d0dca6 HTTP/1.1
+GET http://localhost:3002/api/authors/61b8db5f21987410d36d1b9e HTTP/1.1
 
 ### 
 
-PUT http://localhost:3001/api/authors/ec9c5620-9225-4afe-9774-f44bed82c482 HTTP/1.1
+PUT http://localhost:3002/api/authors/61b8dbb221987410d36d1ba4 HTTP/1.1
 content-type: application/json
 
 { 
-  "firstName": "Mostafiz",
-  "lastName": "abdur rahman",
+  "firstName": "Roberts",
+  "lastName": "Gray",
   "biography": "biography"
 }
 

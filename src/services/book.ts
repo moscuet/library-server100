@@ -5,8 +5,8 @@ const create = async (book: BookDocument): Promise<BookDocument> => {
   return book.save()
 }
 
-const findById = async (bookId: string): Promise<BookDocument> => {
-  const foundBook = await Book.findById(bookId)
+const findByIdAndPopulate = async (bookId: string): Promise<BookDocument> => {
+  const foundBook = await Book.findById(bookId).populate('authors')
 
   if (!foundBook) {
     throw new NotFoundError(`Book ${bookId} not found`)
@@ -18,6 +18,10 @@ const findById = async (bookId: string): Promise<BookDocument> => {
 const findAll = async (): Promise<BookDocument[]> => {
   return Book.find().sort({ title: 1, publishedYear: -1 })
   // return Book.find().sort({ name: 1, publishedYear: -1 })
+}
+
+const findByQuery = async (): Promise<BookDocument[]> => {
+  return Book.find().sort({ title: 1, publishedYear: -1 })
 }
 
 const findAllAndPopulate = async (): Promise<BookDocument[]> => {
@@ -57,8 +61,9 @@ const deleteBook = async (bookId: string): Promise<BookDocument | null> => {
 
 export default {
   create,
-  findById,
+  findByIdAndPopulate,
   findAll,
+  findByQuery,
   deleteAll,
   update,
   deleteBook,

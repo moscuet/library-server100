@@ -11,11 +11,11 @@ export const createBorrow = async (
   next: NextFunction
 ) => {
   try {
-    const { ISBN, customerId, borrowDate, returnDate } = req.body
+    const { bookId, customerId, borrowDate, returnDate } = req.body
 
     const borrow = new Borrow({
-      ISBN,
       customerId,
+      bookId,
       borrowDate,
       returnDate,
     })
@@ -94,14 +94,31 @@ export const findAll = async (
   res: Response,
   next: NextFunction
 ) => {
-  try {
-    res.json(await BorrowService.findAll())
-  } catch (error) {
-    console.log('error')
-    if (error instanceof Error && error.name == 'ValidationError') {
-      next(new BadRequestError('Invalid Request', error))
-    } else {
-      next(error)
+  const params: string = req.query.customerId as string
+  console.log('param customerId: ', params)
+  if (!params) {
+    console.log('customerId is undefined')
+
+    try {
+      res.json(await BorrowService.findAll())
+    } catch (error) {
+      console.log('error')
+      if (error instanceof Error && error.name == 'ValidationError') {
+        next(new BadRequestError('Invalid Request', error))
+      } else {
+        next(error)
+      }
+    }
+  } else {
+    try {
+      res.json(await BorrowService.findByCustomerId(params))
+    } catch (error) {
+      console.log('error')
+      if (error instanceof Error && error.name == 'ValidationError') {
+        next(new BadRequestError('Invalid Request', error))
+      } else {
+        next(error)
+      }
     }
   }
 }
