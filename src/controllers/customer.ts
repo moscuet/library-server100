@@ -12,8 +12,20 @@ export const updateCustomer = async (
   next: NextFunction
 ) => {
   try {
-    const update = req.body
+    const update = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      useremail: req.body.useremail,
+      phoneNumber: req.body.phoneNumber,
+      address: req.body.address,
+    }
     const customerId = req.params.customerId
+    console.log(
+      'from controller/customers/updatecustomer rep.body && id:',
+      update,
+      customerId
+    )
+
     const updatedCustomer = await CustomerService.update(customerId, update)
     res.json(updatedCustomer)
   } catch (error) {

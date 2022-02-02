@@ -4,20 +4,27 @@
 import mongoose, { Document } from 'mongoose'
 
 export type BorrowDocument = Document & {
-  bookId: string
-  customerId: string
+  bookId: string[]
+  customerId: string[]
   borrowDate: Date
   returnDate: Date
+  isReturned?: boolean
 }
 const borrowSchema = new mongoose.Schema({
-  bookId: {
-    type: String,
-    required: true,
-    ref: 'Book',
-  },
-  customerId: {
-    type: String,
-  },
+  bookId: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Book',
+      required: true,
+    },
+  ],
+  customerId: [
+    {
+      type: String,
+      ref: 'Customer',
+      required: true,
+    },
+  ],
   borrowDate: {
     type: Date,
     default: Date.now,
@@ -25,6 +32,10 @@ const borrowSchema = new mongoose.Schema({
   returnDate: {
     type: Date,
     default: new Date(new Date().getTime() + 7 * 24 * 3600 * 1000),
+  },
+  isReturned: {
+    type: Boolean,
+    default: false,
   },
 })
 

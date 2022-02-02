@@ -18,6 +18,7 @@ export const createBorrow = async (
       bookId,
       borrowDate,
       returnDate,
+      isReturned: false,
     })
 
     await BorrowService.create(borrow)

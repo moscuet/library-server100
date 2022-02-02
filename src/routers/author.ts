@@ -11,7 +11,7 @@ import {
 
 const router = express.Router()
 
-// Every path we define here will get /api/v1/authors prefix
+// Every path we define here will get /api/authors prefix
 router.get('/', findAll)
 router.get('/:authorId', findById)
 router.put('/:authorId', updateAuthor)

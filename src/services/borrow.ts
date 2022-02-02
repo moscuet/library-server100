@@ -15,13 +15,13 @@ const findById = async (borrowId: string): Promise<BorrowDocument> => {
 }
 
 const findAll = async (): Promise<BorrowDocument[]> => {
-  return Borrow.find().sort({ fisrtName: 1 })
+  return Borrow.find().sort({ fisrtName: 1 }).populate('customerId')
 }
 
 const findByCustomerId = async (
   customerId: string
 ): Promise<BorrowDocument[]> => {
-  return Borrow.find({ customerId }).exec()
+  return Borrow.find({ customerId }).populate('bookId')
 }
 
 const deleteAll = async (): Promise<BorrowDocument[] | null> => {

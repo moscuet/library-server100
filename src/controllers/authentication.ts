@@ -42,7 +42,7 @@ export const signin = async (
 
     const resObj = {
       _id: customer.id,
-      firstNmae: customer.firstName,
+      firstName: customer.firstName,
       lastName: customer.lastName,
       useremail: customer.useremail,
       phoneNumber: customer.phoneNumber,

@@ -11,8 +11,8 @@ POST http://localhost:3002/api/borrows/ HTTP/1.1
 content-type: application/json
 
 { 
-  "bookId": "61b09ce2b2e6de6bcdf29eef",
-  "customerId" : "283f04bf-0780-4017-981f-683d45f0daf2" 
+  "bookId": ["61b09ce2b2e6de6bcdf29eef"],
+  "customerId" : ["283f04bf-0780-4017-981f-683d45f0daf2"] 
 }
 
 ###
