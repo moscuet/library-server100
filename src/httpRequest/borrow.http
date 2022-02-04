@@ -22,12 +22,16 @@ DELETE http://localhost:3001/api/borrows/61a19c4a40b5823475660f45 HTTP/1.1
 GET http://localhost:3001/api/borrows/61a1962d40b5823475660f31 HTTP/1.1
 
 ### 
-PUT http://localhost:3001/api/borrows/61a1962d40b5823475660f31 HTTP/1.1
+PUT http://localhost:3002/api/borrows/61ba974f03eba85093c74984 HTTP/1.1
 content-type: application/json
 
-{ 
-  "ISBN": "978-7-6645-2127-0",
-  "useriId" : "6437160f-ebe0-4095-bde4-0775481acdd0" 
+{
+    "bookId": ["61b09ce2b2e6de6bcdf29eef"],
+    "customerId": ["283f04bf-0780-4017-981f-683d45f0daf2"],
+    "returnDate": "2021-12-23T01:25:56.648Z",
+    "isReturned": true,
+    "_id": "61ba974f03eba85093c74984",
+    "borrowDate": "2021-12-16T01:33:03.888Z"
 }
 
 ###

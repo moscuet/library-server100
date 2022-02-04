@@ -7,6 +7,8 @@ const create = async (borrow: BorrowDocument): Promise<BorrowDocument> => {
 
 const findById = async (borrowId: string): Promise<BorrowDocument> => {
   const foundBorrow = await Borrow.findById(borrowId)
+    .populate('customerId')
+    .populate('bookId')
   if (!foundBorrow) {
     throw new NotFoundError(`Borrow ${borrowId} not found`)
   }

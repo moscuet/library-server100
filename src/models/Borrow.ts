@@ -8,7 +8,8 @@ export type BorrowDocument = Document & {
   customerId: string[]
   borrowDate: Date
   returnDate: Date
-  isReturned?: boolean
+  isReturned: boolean
+  _id?: string
 }
 const borrowSchema = new mongoose.Schema({
   bookId: [
