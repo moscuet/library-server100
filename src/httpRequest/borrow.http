@@ -1,6 +1,6 @@
 
 
-GET http://localhost:3002/api/borrows?customerId=283f04bf-0780-4017-981f-683d45f0daf2 HTTP/1.1
+GET http://localhost:3002/api/borrows?customerId=6437160f-ebe0-4095-bde4-0775481acdd0 HTTP/1.1
 
 ###
 GET http://localhost:3002/api/borrows HTTP/1.1
@@ -11,12 +11,12 @@ POST http://localhost:3002/api/borrows/ HTTP/1.1
 content-type: application/json
 
 { 
-  "bookId": ["61b09ce2b2e6de6bcdf29eef"],
-  "customerId" : ["283f04bf-0780-4017-981f-683d45f0daf2"] 
+  "bookId": ["61b208985f6561844689da5e"],
+  "customerId" : ["6437160f-ebe0-4095-bde4-0775481acdd0"] 
 }
 
 ###
-DELETE http://localhost:3001/api/borrows/61a19c4a40b5823475660f45 HTTP/1.1
+DELETE http://localhost:3002/api/borrows/61fc1c4ae0e0030bd35f55ee HTTP/1.1
 
 ###
 GET http://localhost:3001/api/borrows/61a1962d40b5823475660f31 HTTP/1.1

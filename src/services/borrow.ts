@@ -17,7 +17,7 @@ const findById = async (borrowId: string): Promise<BorrowDocument> => {
 }
 
 const findAll = async (): Promise<BorrowDocument[]> => {
-  return Borrow.find().sort({ fisrtName: 1 }).populate('customerId')
+  return Borrow.find().sort({ fisrtName: 1 }).populate('bookId')
 }
 
 const findByCustomerId = async (
