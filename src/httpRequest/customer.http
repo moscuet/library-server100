@@ -1,0 +1,43 @@
+
+GET http://localhost:3002/api/customers/ HTTP/1.1
+
+###
+6437160f-ebe0-4095-bde4-0775481acdd0
+61b08a1d40793a492f239001
+###
+POST http://localhost:3002/api/auths/signup HTTP/1.1
+content-type: application/json
+
+{ 
+  "firstName": "Nicolasss",
+  "lastName": "Ray",
+  "useremail": "gfgggv99@gmail.com",
+  "phoneNumber": "1293123123",
+  "address": "adresss",
+  "password": "111111",
+  "roles":"user",
+  "img":"https://previews.123rf.com/images/metelsky/metelsky1809/metelsky180900233/109815470-man-avatar-profile-male-face-icon-vector-illustration-.jpg"
+}
+
+###
+DELETE http://localhost:3002/api/customers/6437160f-ebe0-4095-bde4-0775481acdd0 HTTP/1.1
+
+###
+GET http://localhost:3002/api/customers/6437160f-ebe0-4095-bde4-0775481acdd0 HTTP/1.1
+
+### 
+
+PUT http://localhost:3002/api/customers/6437160f-ebe0-4095-bde4-0775481acdd0 HTTP/1.1
+content-type: application/json
+
+{ 
+  "firstName": "Crisszz",
+  "lastName": "Dane",
+  "useremail": "user@gmail.com",
+  "phoneNumber": 1293123123,
+  "address": "adresss"
+}
+
+###
+
+DELETE http://localhost:3002/api/customers/all HTTP/1.1

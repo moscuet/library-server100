@@ -1,0 +1,38 @@
+
+GET http://localhost:3002/api/authors/ HTTP/1.1
+
+###
+
+POST http://localhost:3002/api/authors/ HTTP/1.1
+content-type: application/json
+
+{ 
+  "firstName": "Mr",
+  "lastName": "Romey",
+  "biography": "biography"
+}
+
+###
+DELETE http://localhost:3002/api/authors/61b8db5f21987410d36d1b9e HTTP/1.1
+
+###
+GET http://localhost:3002/api/authors/61b8db5f21987410d36d1b9e HTTP/1.1
+
+### 
+
+PUT http://localhost:3002/api/authors/61b8dbb221987410d36d1ba4 HTTP/1.1
+content-type: application/json
+
+{ 
+  "firstName": "Roberts",
+  "lastName": "Gray",
+  "biography": "biography"
+}
+
+###
+
+DELETE http://localhost:3001/api/authors/all HTTP/1.1
+
+###
+
+

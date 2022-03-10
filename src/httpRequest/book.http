@@ -1,0 +1,56 @@
+// author: 61b08a1d40793a492f239001,61a9759da3eb1c07c18c3e71, 61b08b8c40793a492f23900f
+//https://images.unsplash.com/photo-1532348374062-fee19177e98f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80
+GET http://localhost:3002/api/books/all HTTP/1.1
+
+###  query
+
+GET http://localhost:3002/api/books/catagory HTTP/1.1
+
+###
+
+POST http://localhost:3002/api/books HTTP/1.1
+content-type: application/json
+
+{   
+    "ISBN": "2114414141434",
+    "title":"Book98",
+    "publisherName":"annad prokashani",
+    "author":"61a9759da3eb1c07c18c3e71",
+    "publishedYear":"1952",
+    "genres":"action",
+    "description":"description",
+    "edition":"third edition",
+    "pageCount":"120",
+    "img":"https://images.unsplash.com/photo-1532348374062-fee19177e98f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+}
+###
+DELETE http://localhost:3002/api/books/61b71bce49fe1add067c8672 HTTP/1.1
+
+###
+GET http://localhost:3002/api/books/61b71bce49fe1add067c8672 HTTP/1.1
+
+### 
+
+PUT http://localhost:3000/api/v1/movies/619f72c0ccb63a69fdd651fb HTTP/1.1
+content-type: application/json
+
+{   
+    "ISBN": "978-7-6645-2127-0",
+    "title":"Book111",
+    "publisherName":"annad prokashani",
+    "authorName":"rahman",
+    "publishedYear":"1952",
+    "genres":["action"],
+    "description":"description",
+    "edition":"third edition",
+    "pageCount":"120"
+}
+
+###
+
+DELETE http://localhost:3002/api/books/all HTTP/1.1
+
+###
+
+GET http://localhost:3002/api/books/all HTTP/1.1
+
