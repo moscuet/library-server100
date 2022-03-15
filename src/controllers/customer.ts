@@ -20,11 +20,6 @@ export const updateCustomer = async (
       address: req.body.address,
     }
     const customerId = req.params.customerId
-    console.log(
-      'from controller/customers/updatecustomer rep.body && id:',
-      update,
-      customerId
-    )
 
     const updatedCustomer = await CustomerService.update(customerId, update)
     res.json(updatedCustomer)
@@ -55,8 +50,6 @@ export const deleteCustomer = async (
   }
 }
 
-// GET /Customers/:customerId
-// GET /Authors/:AuthorId
 export const findById = async (
   req: Request,
   res: Response,

@@ -27,8 +27,3 @@ const authorSchema = new mongoose.Schema({
 })
 
 export default mongoose.model<AuthorDocument>('Author', authorSchema)
-
-// _id: mongoose.ObjectId
-// firstName: string
-// lastName: string
-// biography: string

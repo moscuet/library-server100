@@ -45,5 +45,3 @@ app.use('/api/authors', authorRouter)
 app.use(apiErrorHandler)
 
 export default app
-
-//API_URL + "signup", { firstName, lastName, email, phoneNumber, address, password }

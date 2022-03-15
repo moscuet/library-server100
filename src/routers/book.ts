@@ -25,7 +25,7 @@ router.get('/:bookId', findByIdAndPopulate)
 router.put('/:bookId', updateBook)
 
 // deleteAll only for testing
-router.delete('/all', deleteAll)
+//router.delete('/all', deleteAll)
 
 router.delete('/:bookId', deleteBook)
 router.post('/', createBook)

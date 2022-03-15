@@ -51,8 +51,6 @@ export const updateAuthor = async (
   }
 }
 
-//##################
-
 // DELETE /Authors/:AuthorId
 export const deleteAuthor = async (
   req: Request,

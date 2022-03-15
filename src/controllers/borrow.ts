@@ -52,8 +52,6 @@ export const updateBorrow = async (
   }
 }
 
-//##################
-
 // DELETE /borrows/:borrowId
 export const deleteBorrow = async (
   req: Request,
@@ -96,14 +94,10 @@ export const findAll = async (
   next: NextFunction
 ) => {
   const params: string = req.query.customerId as string
-  console.log('param customerId: ', params)
   if (!params) {
-    console.log('customerId is undefined')
-
     try {
       res.json(await BorrowService.findAll())
     } catch (error) {
-      console.log('error')
       if (error instanceof Error && error.name == 'ValidationError') {
         next(new BadRequestError('Invalid Request', error))
       } else {
@@ -114,7 +108,6 @@ export const findAll = async (
     try {
       res.json(await BorrowService.findByCustomerId(params))
     } catch (error) {
-      console.log('error')
       if (error instanceof Error && error.name == 'ValidationError') {
         next(new BadRequestError('Invalid Request', error))
       } else {
