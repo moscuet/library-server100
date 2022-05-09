@@ -27,3 +27,5 @@ Below are the steps that you need to finish in order to finish this module
 7. Add authentication middleware using passport, google and jwt strategy
 8. Add tests for your controllers and services. Remember to create the jwt token for your tests, because if your controller is protected, then the test should send the token also
 9. Create a client folder in the project root, you will set up your react frontend in here. If there's a problem running the react app after install, try creating a `.env` file inside `client` folder. And put this line in there: `SKIP_PREFLIGHT_CHECK=true`
+
+
