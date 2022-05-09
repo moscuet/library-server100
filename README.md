@@ -18,6 +18,7 @@
 
 Below are the steps that you need to finish in order to finish this module
 
+
 1. Explore the code base, start with `server.ts`
 2. Create all the mongoose schema for your ERD
 3. Create CRUD endpoints for all the schema
