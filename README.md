@@ -1,4 +1,4 @@
-# Fullstack-Typescript-Project
+# Library-Backend-Typescript-Project
 
 ## Prerequisites
 
