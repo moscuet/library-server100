@@ -7,13 +7,13 @@ export type BookDocument = Document & {
   ISBN: string
   title: string
   publisherName: string
-  author: string[]
+  authorName: string[]
   publishedYear: number
   genres: string[]
   description: string
   edition: string
   pageCount: number
-  img: string
+  img?: string
 }
 
 const bookSchema = new mongoose.Schema({
