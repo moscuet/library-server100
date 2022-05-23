@@ -1,6 +1,7 @@
 # Library-Backend-Typescript-Project
 
 #### deployed: https://library-server400.herokuapp.com/api
+#### get all books: https://library-server400.herokuapp.com/api/books 
 ####  endpoilbts: 
 
 
