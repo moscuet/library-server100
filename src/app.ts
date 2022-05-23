@@ -10,6 +10,7 @@ import authorRouter from './routers/author'
 import customerRouter from './routers/customer'
 import borrowRouter from './routers/borrow'
 import authRouter from './routers/authentication'
+import baseRouter from './routers/baseUrl'
 
 import apiErrorHandler from './middlewares/apiErrorHandler'
 import apiContentType from './middlewares/apiContentType'
@@ -40,6 +41,7 @@ app.use('/api/borrows', borrowRouter)
 app.use('/api/books', bookRouter)
 app.use('/api/auths', authRouter)
 app.use('/api/authors', authorRouter)
+app.use('/api', baseRouter)
 
 // Custom API error handler
 app.use(apiErrorHandler)

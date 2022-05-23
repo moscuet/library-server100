@@ -23,7 +23,6 @@ const apiError_1 = require("../helpers/apiError");
 // POST /Customers
 exports.signin = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { useremail, password } = req.body;
-    console.log('data from cont/auth/signinnnn', useremail);
     try {
         const customer = yield Customer_1.default.findOne({ useremail }).exec();
         //console.log('response customer/signin', customer)
@@ -49,7 +48,6 @@ exports.signin = (req, res, next) => __awaiter(void 0, void 0, void 0, function*
             roles: customer.roles,
             accessToken,
         };
-        //console.log('resobj',resObj)
         res.status(200).send(resObj);
     }
     catch (error) {

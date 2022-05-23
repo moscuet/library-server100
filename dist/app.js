@@ -13,6 +13,7 @@ const author_1 = __importDefault(require("./routers/author"));
 const customer_1 = __importDefault(require("./routers/customer"));
 const borrow_1 = __importDefault(require("./routers/borrow"));
 const authentication_1 = __importDefault(require("./routers/authentication"));
+const baseUrl_1 = __importDefault(require("./routers/baseUrl"));
 const apiErrorHandler_1 = __importDefault(require("./middlewares/apiErrorHandler"));
 const apiContentType_1 = __importDefault(require("./middlewares/apiContentType"));
 dotenv_1.default.config({ path: '.env' });
@@ -36,6 +37,7 @@ app.use('/api/borrows', borrow_1.default);
 app.use('/api/books', book_1.default);
 app.use('/api/auths', authentication_1.default);
 app.use('/api/authors', author_1.default);
+app.use('/api', baseUrl_1.default);
 // Custom API error handler
 app.use(apiErrorHandler_1.default);
 exports.default = app;

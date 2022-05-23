@@ -2,10 +2,8 @@
 
 #### deployed: https://library-server400.herokuapp.com/api
 ####  endpoilbts: 
-
-
+##### FOR BOOK
 ```
-For books: 
 all books: https://library-server400.herokuapp.com/api/books
 all books with data population: https://library-server400.herokuapp.com/api/books/all
 get book by id: https://library-server400.herokuapp.com/api/books/id

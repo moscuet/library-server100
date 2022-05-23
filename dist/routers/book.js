@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const book_1 = require("../controllers/book");
 const router = express_1.default.Router();
-// Every path we define here will get /api/v1/books prefix
+// Every path we define here will get /api/books prefix
 //router.get('/', findAll)
 router.get('/catagory', book_1.findByQuery);
 router.get('/all', book_1.findAllAndPopulate);

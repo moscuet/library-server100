@@ -19,7 +19,6 @@ export const signin = async (
   next: NextFunction
 ) => {
   const { useremail, password } = req.body
-  console.log('data from cont/auth/signinnnn', useremail)
 
   try {
     const customer = await Customer.findOne({ useremail }).exec()
@@ -51,7 +50,6 @@ export const signin = async (
       roles: customer.roles,
       accessToken,
     }
-    //console.log('resobj',resObj)
     res.status(200).send(resObj)
   } catch (error) {
     if (error instanceof Error && error.name == 'ValidationError') {
