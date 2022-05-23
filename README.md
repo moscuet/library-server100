@@ -1,8 +1,14 @@
 # Library-Backend-Typescript-Project
+### Typescript, Node, Express, MongoDB, Jest /Supertest
 
-#### deployed: https://library-server400.herokuapp.com/api
-####  endpoilbts: 
-##### FOR BOOK
+##### deployed: https://library-server400.herokuapp.com/api
+##### get all books: https://library-server400.herokuapp.com/api/books 
+##### get all books with data population: https://library-server400.herokuapp.com/api/books/all 
+
+
+###  endpoints: 
+
+
 ```
 all books: https://library-server400.herokuapp.com/api/books
 all books with data population: https://library-server400.herokuapp.com/api/books/all
@@ -12,12 +18,6 @@ delete all book: https://library-server400.herokuapp.com/api/books/all
 post new book: https://library-server400.herokuapp.com/api/books
 
 ```
-
-
-
-
-
-
 
 
 ## Prerequisites
