@@ -1,5 +1,5 @@
 {
-  "name": "Library-app-server",
+  "name": "libraryapp-express-typescript-jest",
   "version": "0.1.0",
   "description": "Library App backend: Node.js express apps with TypeScript",
   "repository": {
