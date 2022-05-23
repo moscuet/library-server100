@@ -1,4 +1,5 @@
 # Library-Backend-Typescript-Project
+### Typescript, Node, Express, MongoDB
 
 #### deployed: https://library-server400.herokuapp.com/api
 #### get all books: https://library-server400.herokuapp.com/api/books 
@@ -15,12 +16,6 @@ delete all book: https://library-server400.herokuapp.com/api/books/all
 post new book: https://library-server400.herokuapp.com/api/books
 
 ```
-
-
-
-
-
-
 
 
 ## Prerequisites
