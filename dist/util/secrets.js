@@ -8,12 +8,12 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const fs_1 = __importDefault(require("fs"));
 const logger_1 = __importDefault(require("./logger"));
 if (fs_1.default.existsSync('.env')) {
-    //console.log('true')
+    console.log('true');
     logger_1.default.debug('Using .env file to supply config environment variables');
     dotenv_1.default.config({ path: '.env' });
 }
 else {
-    //console.log('false')
+    console.log('false');
     logger_1.default.debug('Using .env.example file to supply config environment variables');
     dotenv_1.default.config({ path: '.env.example' }); // you can delete this after you create your own .env file!
 }
@@ -22,7 +22,7 @@ console.log('environment:', exports.ENVIRONMENT);
 const prod = exports.ENVIRONMENT === 'production'; // Anything else is treated as 'dev'
 exports.JWT_SECRET = process.env['JWT_SECRET'];
 exports.MONGODB_URI = (prod ? process.env['MONGODB_URI'] : process.env['MONGODB_URI']);
-console.log('MONGODB_URI', exports.MONGODB_URI);
+// console.log('MONGODB_URI', MONGODB_URI)
 if (!exports.JWT_SECRET) {
     logger_1.default.error('No client secret. Set JWT_SECRET environment variable.');
     process.exit(1);

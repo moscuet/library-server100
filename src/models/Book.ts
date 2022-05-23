@@ -7,7 +7,7 @@ export type BookDocument = Document & {
   ISBN: string
   title: string
   publisherName: string
-  authorName: string[]
+  authors: string[]
   publishedYear: number
   genres: string[]
   description: string

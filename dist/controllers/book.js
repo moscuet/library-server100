@@ -48,20 +48,15 @@ exports.createBook = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
             pageCount,
             img,
         });
-        console.log('0@@@@@@@@@@@@@@@@@', book);
         yield book_1.default.create(book);
         res.json(book);
-        console.log('1@@@@@@@@@@@@@@@@@@@@@@@');
     }
     catch (error) {
-        console.log('2@@@@@@@@@@@@@@@@@@@@@@@');
         //console.log('error from cont/boob/create',error)
         if (error instanceof Error && error.name == 'ValidationError') {
-            console.log('3@@@@@@@@@@@@@@@@@@@@@@@', error);
             next(new apiError_1.BadRequestError('Invalid Request', error));
         }
         else {
-            console.log('@@@@@@@@@@@@@@@@@@@@@@@', error);
             next(error);
         }
     }

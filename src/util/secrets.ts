@@ -4,11 +4,11 @@ import fs from 'fs'
 import logger from './logger'
 
 if (fs.existsSync('.env')) {
-  //console.log('true')
+  console.log('true')
   logger.debug('Using .env file to supply config environment variables')
   dotenv.config({ path: '.env' })
 } else {
-  //console.log('false')
+  console.log('false')
   logger.debug('Using .env.example file to supply config environment variables')
   dotenv.config({ path: '.env.example' }) // you can delete this after you create your own .env file!
 }
@@ -22,7 +22,7 @@ export const MONGODB_URI = (
   prod ? process.env['MONGODB_URI'] : process.env['MONGODB_URI']
 ) as string
 
-console.log('MONGODB_URI', MONGODB_URI)
+// console.log('MONGODB_URI', MONGODB_URI)
 
 if (!JWT_SECRET) {
   logger.error('No client secret. Set JWT_SECRET environment variable.')

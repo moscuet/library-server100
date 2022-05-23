@@ -18,7 +18,7 @@ router.get('/', (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
     res.status(200).json({
         status: 'ok',
         statusCode: 200,
-        message: `Welcome Library Api`,
+        message: 'Welcome To Library Api',
     });
     return;
 }));

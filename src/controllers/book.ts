@@ -56,20 +56,13 @@ export const createBook = async (
       pageCount,
       img,
     })
-    console.log('0@@@@@@@@@@@@@@@@@', book)
     await BookService.create(book)
     res.json(book)
-    console.log('1@@@@@@@@@@@@@@@@@@@@@@@')
   } catch (error) {
-    console.log('2@@@@@@@@@@@@@@@@@@@@@@@')
-
     //console.log('error from cont/boob/create',error)
     if (error instanceof Error && error.name == 'ValidationError') {
-      console.log('3@@@@@@@@@@@@@@@@@@@@@@@', error)
-
       next(new BadRequestError('Invalid Request', error))
     } else {
-      console.log('@@@@@@@@@@@@@@@@@@@@@@@', error)
       next(error)
     }
   }
