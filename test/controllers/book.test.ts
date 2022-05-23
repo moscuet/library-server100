@@ -1,5 +1,5 @@
 import request from 'supertest'
-import { expect, describe, beforeAll, afterAll, afterEach,it, test } from '@jest/globals';
+import { expect, describe, beforeAll, afterAll, afterEach,it, test } from '@jest/globals'
 
 import { BookDocument } from '../../src/models/book'
 import app from '../../src/app'
@@ -9,10 +9,10 @@ const nonExistingbookId = '5e57b77b5744fa0b461c7906'
 
 async function createbook(override?: Partial<BookDocument>) {
   let book = {
-    ISBN: "2114414141434",
-    title: "Book98",
-    publisherName: "annad prokashani",
-    authorName: ["61a9759da3eb1c07c18c3e71"],
+    ISBN: '2114414141434',
+    title: 'Book98',
+    publisherName: 'annad prokashani',
+    authorName: ['61a9759da3eb1c07c18c3e71'],
     publishedYear: 1966,
     genres:['action'],
     description: 'description',
@@ -55,8 +55,8 @@ describe('book controller', () => {
       .post('/api/books')
       .send({
         // incomplete or worng data type
-        ISBN: "2114414141434",
-        title: "Book98",
+        ISBN: '2114414141434',
+        title: 'Book98',
         genres:'',
         description: 'description',
       })
@@ -80,10 +80,10 @@ describe('book controller', () => {
 
   it('should get back all book', async () => {
     const res1 = await createbook({
-      ISBN: "2114414141430",
-      title: "Book981",
-      publisherName: "annad prokashani",
-      authorName: ["61a9759da3eb1c07c18c3e71"],
+      ISBN: '2114414141430',
+      title: 'Book981',
+      publisherName: 'annad prokashani',
+      authorName: ['61a9759da3eb1c07c18c3e71'],
       publishedYear: 1967,
       genres:['action'],
       description: 'description',
@@ -91,10 +91,10 @@ describe('book controller', () => {
       pageCount: 124,
     })
     const res2 = await createbook({
-      ISBN: "2114414141433",
-      title: "Book982",
-      publisherName: "annad prokashani",
-      authorName: ["61a9759da3eb1c07c18c3e71"],
+      ISBN: '2114414141433',
+      title: 'Book982',
+      publisherName: 'annad prokashani',
+      authorName: ['61a9759da3eb1c07c18c3e71'],
       publishedYear: 1968,
       genres:['action'],
       description: 'description',

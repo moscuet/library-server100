@@ -1,5 +1,5 @@
 export  = {
-  HOST: "localhost",
+  HOST: 'localhost',
   PORT: 27017,
-  DB: "bezkoder_db"
+  DB: 'bezkoder_db'
 };

@@ -1,4 +1,4 @@
-import { expect, describe, beforeAll, afterAll, afterEach,it, test } from '@jest/globals';
+import { expect, describe, beforeAll, afterAll, afterEach,it, test } from '@jest/globals'
 
 import Book from '../../src/models/Book'
 import BookService from '../../src/services/book'
@@ -8,10 +8,10 @@ const nonExistingbookId = '5e57b77b5744fa0b461c7906'
 
 async function createbook() {
   const book = new Book({
-    ISBN: "2114414141487",
-    title: "Book989",
-    publisherName: "annad prokashani",
-    authorName: ["61a9759da3eb1c07c18c3e71"],
+    ISBN: '2114414141487',
+    title: 'Book989',
+    publisherName: 'annad prokashani',
+    authorName: ['61a9759da3eb1c07c18c3e71'],
     publishedYear: 1966,
     genres:['action'],
     description: 'description',
