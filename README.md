@@ -1,7 +1,8 @@
 # Library-Backend-Typescript-Project
 ### Typescript, Node, Express, MongoDB, Jest /Supertest
 
-#### deployed: https://library-server400.herokuapp.com/api
+##### deployed: https://library-server400.herokuapp.com/api
+##### get all books with data population: https://library-server400.herokuapp.com/api/books/all 
 #### get all books: https://library-server400.herokuapp.com/api/books 
 ####  endpoints: 
 
