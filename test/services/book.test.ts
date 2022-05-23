@@ -52,8 +52,7 @@ describe('book service', () => {
     expect(found._id).toEqual(book._id)
   })
 
-  // Check https://jestjs.io/docs/en/asynchronous for more info about
-  // how to test async code, especially with error
+  
   it('should not get a non-existing book', async () => {
     expect.assertions(1)
     return BookService.findByIdAndPopulate(nonExistingbookId).catch((e) => {
