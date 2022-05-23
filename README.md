@@ -1,7 +1,28 @@
 # Library-Backend-Typescript-Project
 
-## Prerequisites
+#### deployed: https://library-server400.herokuapp.com/api
+####  endpoilbts: 
 
+
+```
+For books: 
+all books: https://library-server400.herokuapp.com/api/books
+all books with data population: https://library-server400.herokuapp.com/api/books/all
+get book by id: https://library-server400.herokuapp.com/api/books/id
+update book by id: hhttps://library-server400.herokuapp.com/api/books/id 
+delete all book: https://library-server400.herokuapp.com/api/books/all
+post new book: https://library-server400.herokuapp.com/api/books
+
+```
+
+
+
+
+
+
+
+
+## Prerequisites
 1. Install mongodb
 2. Install nodejs
 
