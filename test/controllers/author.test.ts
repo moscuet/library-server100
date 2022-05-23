@@ -109,14 +109,14 @@ describe("author controller", () => {
         const authorId = res.body._id
         const update = {
           firstName: 'Kashokhi',
-          publishedYear: 2016,
+          biography:'biography of kashokhi',
         }
     
         res = await request(app).put(`/api/authors/${authorId}`).send(update)
 
         expect(res.status).toEqual(200)
-        expect(res.body.name).toEqual('Kashokhi')
-        expect(res.body.publishedYear).toEqual(2016)
+        expect(res.body.firstName).toEqual('Kashokhi')
+        expect(res.body.biography).toEqual('biography of kashokhi')
       })
 
       it('should delete an existing author', async () => {
