@@ -19,12 +19,15 @@ post new book: https://library-server400.herokuapp.com/api/books
 
 ```
 
-### data structure
+### Entity Relationship Diagram (ERD)
 
 
 
+![Screenshot 2022-05-27 at 0 27 32](https://user-images.githubusercontent.com/51766137/170583219-af113de7-46b8-4e48-8967-2c51de649452.png)
 
-[Online Bookstore.pdf](https://github.com/moscuet/library-server100/files/8782220/Online.Bookstore.pdf)
+
+
+[Entity Relationship Diagram (ERD)](https://github.com/moscuet/library-server100/files/8782220/Online.Bookstore.pdf)
 
 
 ## Prerequisites
