@@ -19,6 +19,13 @@ post new book: https://library-server400.herokuapp.com/api/books
 
 ```
 
+### data structure
+
+
+
+
+[Online Bookstore.pdf](https://github.com/moscuet/library-server100/files/8782220/Online.Bookstore.pdf)
+
 
 ## Prerequisites
 1. Install mongodb
