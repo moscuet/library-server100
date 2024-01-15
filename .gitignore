@@ -39,3 +39,6 @@ Thumbs.db
 
 *.swo
 *.swp
+
+# Local Netlify folder
+.netlify

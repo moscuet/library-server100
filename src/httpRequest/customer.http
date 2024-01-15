@@ -5,9 +5,8 @@ GET http://localhost:3002/api/customers/ HTTP/1.1
 6437160f-ebe0-4095-bde4-0775481acdd0
 61b08a1d40793a492f239001
 ###
-POST http://localhost:3002/api/auths/signup HTTP/1.1
+POST http://localhost:3000/api/auths/signup HTTP/1.1
 content-type: application/json
-
 { 
   "firstName": "Nicolasss",
   "lastName": "Ray",

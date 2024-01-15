@@ -1,4 +1,4 @@
-import request from "supertest";
+import request from 'supertest'
 
 import {
   expect,
@@ -12,17 +12,17 @@ import {
   jest
 } from '@jest/globals'
 
-import app from "../../src/app";
-import  connect, { MongodHelper } from "../db-helper";
-import { AuthorDocument } from "../../src/models/Author";
+import app from '../../src/app'
+import  connect, { MongodHelper } from '../db-helper'
+import { AuthorDocument } from '../../src/models/Author'
 
 const nonExistingAuthoId = '61a9759da3ek1c07c18c3e71'
 
 async function createAuthor(override?: Partial<AuthorDocument>) {
     let author =  { 
-      firstName: "MrQ",
-      lastName: "Romey",
-      biography: "biography"
+      firstName: 'MrQ',
+      lastName: 'Romey',
+      biography: 'biography'
     }
     if (override) {
       author = { ...author, ...override }
@@ -30,7 +30,7 @@ async function createAuthor(override?: Partial<AuthorDocument>) {
     return await request(app).post('/api/authors').send(author)
   }
   
-describe("author controller", () => {
+describe('author controller', () => {
         let mongodHelper: MongodHelper
        
         beforeAll(async () => {
@@ -39,9 +39,9 @@ describe("author controller", () => {
         })
 
         beforeEach(() => {
-            jest.setTimeout(30000);
+            jest.setTimeout(30000)
 
-          });
+          })
 
           afterEach(async () => {
             await mongodHelper.clearDatabase()
@@ -51,31 +51,31 @@ describe("author controller", () => {
             await mongodHelper.closeDatabase()
         })
     // 
-      it("should create a author", async () => {
-        const res = await createAuthor();
+      it('should create a author', async () => {
+        const res = await createAuthor()
         expect(res.status).toBe(200)
         expect(res.body).toHaveProperty('_id')
-        expect(res.body.firstName).toBe("MrQ");
-      });
+        expect(res.body.firstName).toBe('MrQ')
+      })
       
-      it("should not create a author with wrong data", async () => {
+      it('should not create a author with wrong data', async () => {
         const res = await request(app)
          .post('/api/authors')
          .send({ 
-            first: "MrQ", // wrong property
-            lastName: "Romey",
-            biography: "biography"
+            first: 'MrQ', // wrong property
+            lastName: 'Romey',
+            biography: 'biography'
           })
           
         expect(res.status).toBe(400)
-    });
+    })
 
     it('should get back all author', async () => {
         const res1 = await createAuthor({
-            firstName: "Danny"
+            firstName: 'Danny'
         })
         const res2 = await createAuthor({
-            firstName: "Richel"
+            firstName: 'Richel'
         })
 
         const res3 = await request(app).get('/api/authors')

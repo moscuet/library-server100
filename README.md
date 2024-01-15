@@ -39,6 +39,7 @@ post new book: https://library-server400.herokuapp.com/api/books
 1. Create a `.env` file in the root directory and copy the content from `.env.example`
 
 2. Make sure mongodb is running
+ - brew install mongodb 
 3. Install dependencies: `yarn`
 4. Use this command for development mode: `yarn run watch`
 5. If you need to customize your env, take a look at `secrets.ts` file
@@ -60,3 +61,18 @@ Below are the steps that you need to finish in order to finish this module
 
 
 // "test": "jest --forceExit --detectOpenHandles --coverage --verbose false",
+
+
+### mongodb setup in local env
+
+for mac user:
+install: brew install mongodb,  Tap the MongoDB Homebrew Tap:  brew tap mongodb/brew
+ Start MongoDB Service: brew services start mongodb-community, Verify Installation: brew services list
+Install MongoDB Shell (mongosh): brew install mongosh
+ Running the MongoDB Shell: mongosh
+Create or Use a Databas: use yourDatabaseName
+Experiment with MongoDB: db.createCollection("myCollection")
+db.myCollection.insert({ name: "test", value: 1 })
+db.myCollection.find()
+
+
