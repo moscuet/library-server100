@@ -22,7 +22,6 @@ console.log('environment:', exports.ENVIRONMENT);
 const prod = exports.ENVIRONMENT === 'production'; // Anything else is treated as 'dev'
 exports.JWT_SECRET = process.env['JWT_SECRET'];
 exports.MONGODB_URI = (prod ? process.env['MONGODB_URI'] : process.env['MONGODB_URI']);
-// console.log('MONGODB_URI', MONGODB_URI)
 if (!exports.JWT_SECRET) {
     logger_1.default.error('No client secret. Set JWT_SECRET environment variable.');
     process.exit(1);
