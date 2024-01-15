@@ -1,5 +1,6 @@
 import Book, { BookDocument } from '../models/Book'
 import { NotFoundError } from '../helpers/apiError'
+import { DeleteResult } from 'mongodb'
 
 const create = async (book: BookDocument): Promise<BookDocument> => {
   return book.save()
@@ -30,8 +31,8 @@ const findAllAndPopulate = async (): Promise<BookDocument[]> => {
   // return Book.find().sort({ name: 1, publishedYear: -1 })
 }
 
-const deleteAll = async (): Promise<BookDocument[] | null> => {
-  return Book.remove({})
+const deleteAll = async (): Promise<DeleteResult> => {
+  return Book.deleteMany({})
 }
 
 const update = async (

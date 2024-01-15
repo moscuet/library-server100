@@ -1,5 +1,6 @@
 import Borrow, { BorrowDocument } from '../models/Borrow'
 import { NotFoundError } from '../helpers/apiError'
+import { DeleteResult } from 'mongodb'
 
 const create = async (borrow: BorrowDocument): Promise<BorrowDocument> => {
   return borrow.save()
@@ -26,8 +27,8 @@ const findByCustomerId = async (
   return Borrow.find({ customerId }).populate('bookId')
 }
 
-const deleteAll = async (): Promise<BorrowDocument[] | null> => {
-  return Borrow.remove({})
+const deleteAll = async (): Promise<DeleteResult> => {
+  return Borrow.deleteMany({})
 }
 
 const update = async (

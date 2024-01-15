@@ -21,7 +21,7 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const Customer_1 = __importDefault(require("../models/Customer"));
 const apiError_1 = require("../helpers/apiError");
 // POST /Customers
-exports.signin = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const signin = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { useremail, password } = req.body;
     try {
         const customer = yield Customer_1.default.findOne({ useremail }).exec();
@@ -67,13 +67,14 @@ exports.signin = (req, res, next) => __awaiter(void 0, void 0, void 0, function*
         }
     }
 });
+exports.signin = signin;
 // POST /Customers
-exports.signup = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const signup = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { firstName, lastName, useremail, phoneNumber, address, password, roles, } = req.body;
     console.log('data from cont/auth/signup', firstName);
     try {
         const customer = new Customer_1.default({
-            _id: uuid_1.v4(),
+            _id: (0, uuid_1.v4)(),
             firstName,
             lastName,
             useremail,
@@ -109,4 +110,5 @@ exports.signup = (req, res, next) => __awaiter(void 0, void 0, void 0, function*
         }
     }
 });
+exports.signup = signup;
 //# sourceMappingURL=authentication.js.map

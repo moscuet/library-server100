@@ -17,7 +17,7 @@ const Borrow_1 = __importDefault(require("../models/Borrow"));
 const borrow_1 = __importDefault(require("../services/borrow"));
 const apiError_1 = require("../helpers/apiError");
 // POST /borrows
-exports.createBorrow = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const createBorrow = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { bookId, customerId, borrowDate, returnDate } = req.body;
         const borrow = new Borrow_1.default({
@@ -39,8 +39,9 @@ exports.createBorrow = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
         }
     }
 });
+exports.createBorrow = createBorrow;
 // PUT /borrws/:borrowId
-exports.updateBorrow = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const updateBorrow = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const update = req.body;
         const borrowId = req.params.borrowId;
@@ -56,9 +57,10 @@ exports.updateBorrow = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
         }
     }
 });
+exports.updateBorrow = updateBorrow;
 //##################
 // DELETE /borrows/:borrowId
-exports.deleteBorrow = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteBorrow = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield borrow_1.default.deleteBorrow(req.params.borrowId);
         res.status(204).end();
@@ -72,8 +74,9 @@ exports.deleteBorrow = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
         }
     }
 });
+exports.deleteBorrow = deleteBorrow;
 // GET /borrows/:borrowId
-exports.findById = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const findById = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.json(yield borrow_1.default.findById(req.params.borrowId));
     }
@@ -86,8 +89,9 @@ exports.findById = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         }
     }
 });
+exports.findById = findById;
 // GET /borrows
-exports.findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const params = req.query.customerId;
     console.log('param customerId: ', params);
     if (!params) {
@@ -120,8 +124,9 @@ exports.findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function
         }
     }
 });
+exports.findAll = findAll;
 // Delete All Borrow
-exports.deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield borrow_1.default.deleteAll();
         res.status(204).end();
@@ -135,4 +140,5 @@ exports.deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         }
     }
 });
+exports.deleteAll = deleteAll;
 //# sourceMappingURL=borrow.js.map

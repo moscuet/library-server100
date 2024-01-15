@@ -24,24 +24,30 @@ const customerSchema = new mongoose_1.default.Schema({
         trim: true,
         lowercase: true,
         unique: true,
-        required: 'Email address is required',
+        required: [true, 'Email address is required'],
         match: [
             /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
             'Please fill a valid email address',
         ],
     },
-    phoneNumber: Number,
-    address: String,
+    phoneNumber: {
+        type: Number, // Define the type explicitly
+    },
+    address: {
+        type: String,
+    },
     password: {
         type: String,
-        required: 'Passwordr equired',
+        required: [true, 'Password is required'], // Use an array for required message
     },
     roles: {
         type: String,
         enum: ['user', 'moderator', 'admin'],
         default: 'user',
     },
-    img: String,
+    img: {
+        type: String,
+    },
 });
 exports.default = mongoose_1.default.model('Customer', customerSchema);
 //# sourceMappingURL=Customer.js.map

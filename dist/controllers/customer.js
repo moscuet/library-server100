@@ -16,7 +16,7 @@ exports.deleteAll = exports.findAll = exports.findById = exports.deleteCustomer 
 const customer_1 = __importDefault(require("../services/customer"));
 const apiError_1 = require("../helpers/apiError");
 // PUT /Customers/:customerId
-exports.updateCustomer = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const updateCustomer = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const update = {
             firstName: req.body.firstName,
@@ -39,8 +39,9 @@ exports.updateCustomer = (req, res, next) => __awaiter(void 0, void 0, void 0, f
         }
     }
 });
+exports.updateCustomer = updateCustomer;
 // DELETE /Customers/:customerId
-exports.deleteCustomer = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteCustomer = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield customer_1.default.deleteCustomer(req.params.customerId);
         res.status(204).end();
@@ -54,9 +55,10 @@ exports.deleteCustomer = (req, res, next) => __awaiter(void 0, void 0, void 0, f
         }
     }
 });
+exports.deleteCustomer = deleteCustomer;
 // GET /Customers/:customerId
 // GET /Authors/:AuthorId
-exports.findById = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const findById = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.json(yield customer_1.default.findById(req.params.customerId));
     }
@@ -69,8 +71,9 @@ exports.findById = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         }
     }
 });
+exports.findById = findById;
 //GET /Customers
-exports.findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('hello');
     try {
         res.json(yield customer_1.default.findAll());
@@ -85,8 +88,9 @@ exports.findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function
         }
     }
 });
+exports.findAll = findAll;
 //Delete All Customer
-exports.deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield customer_1.default.deleteAll();
         res.status(204).end();
@@ -100,4 +104,5 @@ exports.deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         }
     }
 });
+exports.deleteAll = deleteAll;
 //# sourceMappingURL=customer.js.map

@@ -16,10 +16,10 @@ const authentication_1 = __importDefault(require("./routers/authentication"));
 const baseUrl_1 = __importDefault(require("./routers/baseUrl"));
 const apiErrorHandler_1 = __importDefault(require("./middlewares/apiErrorHandler"));
 const apiContentType_1 = __importDefault(require("./middlewares/apiContentType"));
-const homeurl_1 = __importDefault(require("./routers/homeurl"));
+const home_1 = __importDefault(require("./routers/home"));
 dotenv_1.default.config({ path: '.env' });
-const app = express_1.default();
-app.use(cors_1.default());
+const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
 // parse application/json
 app.use(express_1.default.json());
 // parse application/x-www-form-urlencoded
@@ -28,7 +28,7 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.set('port', process.env.PORT || 3000);
 app.use(apiContentType_1.default);
 // Use common 3rd-party middlewares
-app.use(compression_1.default());
+app.use((0, compression_1.default)());
 app.use(express_1.default.json());
 app.use(lusca_1.default.xframe('SAMEORIGIN'));
 app.use(lusca_1.default.xssProtection(true));
@@ -39,7 +39,7 @@ app.use('/api/books', book_1.default);
 app.use('/api/auths', authentication_1.default);
 app.use('/api/authors', author_1.default);
 app.use('/api', baseUrl_1.default);
-app.use('/', homeurl_1.default);
+app.use('/', home_1.default);
 // Custom API error handler
 app.use(apiErrorHandler_1.default);
 exports.default = app;

@@ -37,7 +37,7 @@ const findAllAndPopulate = () => __awaiter(void 0, void 0, void 0, function* () 
     // return Book.find().sort({ name: 1, publishedYear: -1 })
 });
 const deleteAll = () => __awaiter(void 0, void 0, void 0, function* () {
-    return Book_1.default.remove({});
+    return Book_1.default.deleteMany({});
 });
 const update = (bookId, update) => __awaiter(void 0, void 0, void 0, function* () {
     const foundBook = yield Book_1.default.findByIdAndUpdate(bookId, update, {

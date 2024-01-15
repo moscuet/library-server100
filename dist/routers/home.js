@@ -23,4 +23,4 @@ router.get('/', (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
     return;
 }));
 exports.default = router;
-//# sourceMappingURL=homeurl.js.map
+//# sourceMappingURL=home.js.map

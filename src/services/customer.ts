@@ -1,5 +1,6 @@
 import Customer, { CustomerDocument } from '../models/Customer'
 import { NotFoundError } from '../helpers/apiError'
+import { DeleteResult } from 'mongodb'
 
 const create = async (
   customer: CustomerDocument
@@ -19,8 +20,8 @@ const findAll = async (): Promise<CustomerDocument[]> => {
   return Customer.find()
 }
 
-const deleteAll = async (): Promise<CustomerDocument[] | null> => {
-  return Customer.remove({})
+const deleteAll = async (): Promise<DeleteResult> => {
+  return Customer.deleteMany({})
 }
 
 const update = async (

@@ -6,13 +6,10 @@ const connect = async () => {
   const uri = mongod.getUri()
 
   const mongooseOpts: ConnectOptions = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
+    autoIndex: true,
   }
 
-  await mongoose.connect(uri, mongooseOpts)
+  await mongoose.connect(await uri, mongooseOpts)
 
   return {
     closeDatabase: async () => {

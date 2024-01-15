@@ -18,10 +18,6 @@ const mongoUrl = secrets_1.MONGODB_URI;
 // mongoose.connect(mongoUrl, options)
 mongoose_1.default
     .connect(mongoUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
     autoIndex: true,
 })
     .then(() => {
@@ -39,5 +35,5 @@ mongoose_1.default
 /**
  * Error Handler. Provides full stack - remove for production
  */
-app_1.default.use(errorhandler_1.default());
+app_1.default.use((0, errorhandler_1.default)());
 //# sourceMappingURL=server.js.map
