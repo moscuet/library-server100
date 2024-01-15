@@ -1,1 +1,10 @@
-{ "rewrites": [{ "source": "/(.*)", "destination": "/" }] }
+{
+    "builds": [
+      {
+        "src": "./package.json",
+        "use": "@vercel/node",
+        "config": { "distDir": "dist" }
+      }
+    ]
+  }
+  
