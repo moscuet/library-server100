@@ -42,6 +42,7 @@ app.use('/api/books', bookRouter)
 app.use('/api/auths', authRouter)
 app.use('/api/authors', authorRouter)
 app.use('/api', baseRouter)
+app.use('/', baseRouter)
 
 // Custom API error handler
 app.use(apiErrorHandler)
