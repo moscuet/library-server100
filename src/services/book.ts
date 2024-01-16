@@ -30,8 +30,8 @@ const findAllAndPopulate = async (): Promise<BookDocument[]> => {
   // return Book.find().sort({ name: 1, publishedYear: -1 })
 }
 
-const deleteAll = async (): Promise<BookDocument[] | null> => {
-  return Book.remove({})
+const deleteAll = async (): Promise<void> => {
+  await Book.deleteMany({})
 }
 
 const update = async (

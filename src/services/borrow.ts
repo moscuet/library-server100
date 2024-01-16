@@ -26,8 +26,8 @@ const findByCustomerId = async (
   return Borrow.find({ customerId }).populate('bookId')
 }
 
-const deleteAll = async (): Promise<BorrowDocument[] | null> => {
-  return Borrow.remove({})
+const deleteAll = async (): Promise<void> => {
+  await Borrow.deleteMany({})
 }
 
 const update = async (

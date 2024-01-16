@@ -1,5 +1,6 @@
 import Author, { AuthorDocument } from '../models/Author'
 import { NotFoundError } from '../helpers/apiError'
+import { result } from 'lodash'
 
 const create = async (author: AuthorDocument): Promise<AuthorDocument> => {
   return author.save()
@@ -18,8 +19,8 @@ const findAll = async (): Promise<AuthorDocument[]> => {
   return Author.find().sort({ fisrtName: 1 })
 }
 
-const deleteAll = async (): Promise<AuthorDocument[] | null> => {
-  return Author.remove({})
+const deleteAll = async (): Promise<void> => {
+  await Author.deleteMany({})
 }
 
 const update = async (

@@ -33,7 +33,7 @@ const findByCustomerId = (customerId) => __awaiter(void 0, void 0, void 0, funct
     return Borrow_1.default.find({ customerId }).populate('bookId');
 });
 const deleteAll = () => __awaiter(void 0, void 0, void 0, function* () {
-    return Borrow_1.default.remove({});
+    yield Borrow_1.default.deleteMany({});
 });
 const update = (borrowId, update) => __awaiter(void 0, void 0, void 0, function* () {
     const foundBorrow = yield Borrow_1.default.findByIdAndUpdate(borrowId, update, {

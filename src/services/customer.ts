@@ -19,8 +19,8 @@ const findAll = async (): Promise<CustomerDocument[]> => {
   return Customer.find()
 }
 
-const deleteAll = async (): Promise<CustomerDocument[] | null> => {
-  return Customer.remove({})
+const deleteAll = async (): Promise<void> => {
+  await Customer.deleteMany({})
 }
 
 const update = async (

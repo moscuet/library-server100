@@ -28,7 +28,7 @@ const findAll = () => __awaiter(void 0, void 0, void 0, function* () {
     return Customer_1.default.find();
 });
 const deleteAll = () => __awaiter(void 0, void 0, void 0, function* () {
-    return Customer_1.default.remove({});
+    yield Customer_1.default.deleteMany({});
 });
 const update = (customerId, update) => __awaiter(void 0, void 0, void 0, function* () {
     const foundCustomer = yield Customer_1.default.findByIdAndUpdate(customerId, update, {

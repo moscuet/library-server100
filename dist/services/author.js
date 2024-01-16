@@ -28,7 +28,7 @@ const findAll = () => __awaiter(void 0, void 0, void 0, function* () {
     return Author_1.default.find().sort({ fisrtName: 1 });
 });
 const deleteAll = () => __awaiter(void 0, void 0, void 0, function* () {
-    return Author_1.default.remove({});
+    yield Author_1.default.deleteMany({});
 });
 const update = (authorId, update) => __awaiter(void 0, void 0, void 0, function* () {
     const foundAuthor = yield Author_1.default.findByIdAndUpdate(authorId, update, {
