@@ -17,7 +17,7 @@ const Book_1 = __importDefault(require("../models/Book"));
 const book_1 = __importDefault(require("../services/book"));
 const apiError_1 = require("../helpers/apiError");
 // POST /books
-exports.findByQuery = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const findByQuery = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const q1 = req.query.catagory;
     console.log('catagory');
     try {
@@ -33,7 +33,8 @@ exports.findByQuery = (req, res, next) => __awaiter(void 0, void 0, void 0, func
         }
     }
 });
-exports.createBook = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.findByQuery = findByQuery;
+const createBook = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { ISBN, title, publisherName, author, publishedYear, genres, description, edition, pageCount, img, } = req.body;
         const book = new Book_1.default({
@@ -61,8 +62,9 @@ exports.createBook = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         }
     }
 });
+exports.createBook = createBook;
 // PUT /books/:bookId
-exports.updateBook = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const updateBook = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const update = req.body;
         const bookId = req.params.bookId;
@@ -78,9 +80,10 @@ exports.updateBook = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         }
     }
 });
+exports.updateBook = updateBook;
 //##################
 // DELETE /books/:bookId
-exports.deleteBook = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteBook = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield book_1.default.deleteBook(req.params.bookId);
         res.status(204).end();
@@ -94,8 +97,9 @@ exports.deleteBook = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         }
     }
 });
+exports.deleteBook = deleteBook;
 // GET /books/:bookId
-exports.findByIdAndPopulate = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const findByIdAndPopulate = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.json(yield book_1.default.findByIdAndPopulate(req.params.bookId));
     }
@@ -108,8 +112,9 @@ exports.findByIdAndPopulate = (req, res, next) => __awaiter(void 0, void 0, void
         }
     }
 });
+exports.findByIdAndPopulate = findByIdAndPopulate;
 // GET /books
-exports.findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.json(yield book_1.default.findAll());
     }
@@ -123,8 +128,9 @@ exports.findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function
         }
     }
 });
+exports.findAll = findAll;
 //
-exports.findAllAndPopulate = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const findAllAndPopulate = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('22222222222222 controller');
     try {
         res.json(yield book_1.default.findAllAndPopulate());
@@ -139,8 +145,9 @@ exports.findAllAndPopulate = (req, res, next) => __awaiter(void 0, void 0, void 
         }
     }
 });
+exports.findAllAndPopulate = findAllAndPopulate;
 // Delete All Book
-exports.deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield book_1.default.deleteAll();
         res.status(204).end();
@@ -154,4 +161,5 @@ exports.deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         }
     }
 });
+exports.deleteAll = deleteAll;
 //# sourceMappingURL=book.js.map

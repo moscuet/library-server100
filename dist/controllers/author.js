@@ -17,7 +17,7 @@ const Author_1 = __importDefault(require("../models/Author"));
 const author_1 = __importDefault(require("../services/author"));
 const apiError_1 = require("../helpers/apiError");
 // POST /Authors
-exports.createAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const createAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { firstName, lastName, biography } = req.body;
         const author = new Author_1.default({
@@ -37,8 +37,9 @@ exports.createAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
         }
     }
 });
+exports.createAuthor = createAuthor;
 // PUT /Authors/:AuthorId
-exports.updateAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const updateAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const update = req.body;
         const authorId = req.params.authorId;
@@ -55,9 +56,10 @@ exports.updateAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
         }
     }
 });
+exports.updateAuthor = updateAuthor;
 //##################
 // DELETE /Authors/:AuthorId
-exports.deleteAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield author_1.default.deleteAuthor(req.params.authorId);
         res.status(204).end();
@@ -71,8 +73,9 @@ exports.deleteAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
         }
     }
 });
+exports.deleteAuthor = deleteAuthor;
 // GET /Authors/:AuthorId
-exports.findById = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const findById = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.json(yield author_1.default.findById(req.params.authorId));
     }
@@ -85,8 +88,9 @@ exports.findById = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         }
     }
 });
+exports.findById = findById;
 // GET /Authors
-exports.findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         res.json(yield author_1.default.findAll());
     }
@@ -99,8 +103,9 @@ exports.findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function
         }
     }
 });
+exports.findAll = findAll;
 // Delete All Author
-exports.deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield author_1.default.deleteAll();
         res.status(204).end();
@@ -114,4 +119,5 @@ exports.deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         }
     }
 });
+exports.deleteAll = deleteAll;
 //# sourceMappingURL=author.js.map
