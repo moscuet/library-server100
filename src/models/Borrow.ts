@@ -1,6 +1,3 @@
-//SBN:varchar userId:string borrowdate: timestamp returnDate : timestap
-
-/* eslint-disable @typescript-eslint/member-delimiter-style */
 import mongoose, { Document } from 'mongoose'
 
 export type BorrowDocument = Document & {
@@ -39,7 +36,5 @@ const borrowSchema = new mongoose.Schema({
     default: false,
   },
 })
-
-// {type: Schema.Types.ObjectId, ref: 'Ingredient'}
 
 export default mongoose.model<BorrowDocument>('Borrow', borrowSchema)

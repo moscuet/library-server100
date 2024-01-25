@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-/* eslint-disable @typescript-eslint/member-delimiter-style */
 const mongoose_1 = __importDefault(require("mongoose"));
 const uuid_1 = require("uuid");
 const customerSchema = new mongoose_1.default.Schema({
@@ -31,14 +30,14 @@ const customerSchema = new mongoose_1.default.Schema({
         ],
     },
     phoneNumber: {
-        type: Number, // Wrap in an object to specify type
+        type: Number,
     },
     address: {
         type: String,
     },
     password: {
         type: String,
-        required: [true, 'Password is required'], // Use an array for required with custom error message
+        required: [true, 'Password is required'],
     },
     roles: {
         type: String,

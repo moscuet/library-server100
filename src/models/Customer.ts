@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/member-delimiter-style */
 import mongoose, { Document } from 'mongoose'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -34,21 +33,21 @@ const customerSchema = new mongoose.Schema({
     trim: true,
     lowercase: true,
     unique: true,
-    required: [true, 'Email address is required'], // Use an array for required with custom error message
+    required: [true, 'Email address is required'],
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       'Please fill a valid email address',
     ],
   },
   phoneNumber: {
-    type: Number, // Wrap in an object to specify type
+    type: Number,
   },
   address: {
     type: String,
   },
   password: {
     type: String,
-    required: [true, 'Password is required'], // Use an array for required with custom error message
+    required: [true, 'Password is required'],
   },
   roles: {
     type: String,

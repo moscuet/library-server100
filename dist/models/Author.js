@@ -20,8 +20,4 @@ const authorSchema = new mongoose_1.default.Schema({
     },
 });
 exports.default = mongoose_1.default.model('Author', authorSchema);
-// _id: mongoose.ObjectId
-// firstName: string
-// lastName: string
-// biography: string
 //# sourceMappingURL=Author.js.map

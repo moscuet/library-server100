@@ -1,6 +1,4 @@
 import { Request, Response, NextFunction } from 'express'
-import { v4 as uuidv4 } from 'uuid'
-import mongoose from 'mongoose'
 import Author from '../models/Author'
 import AuthorService from '../services/author'
 import { BadRequestError } from '../helpers/apiError'
@@ -50,8 +48,6 @@ export const updateAuthor = async (
     }
   }
 }
-
-//##################
 
 // DELETE /Authors/:AuthorId
 export const deleteAuthor = async (

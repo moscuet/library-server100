@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/member-delimiter-style */
 import mongoose, { Document } from 'mongoose'
-import { v4 as uuidv4 } from 'uuid'
 
 export type AuthorDocument = Document & authorType
 
@@ -27,8 +26,3 @@ const authorSchema = new mongoose.Schema({
 })
 
 export default mongoose.model<AuthorDocument>('Author', authorSchema)
-
-// _id: mongoose.ObjectId
-// firstName: string
-// lastName: string
-// biography: string

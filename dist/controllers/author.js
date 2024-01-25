@@ -57,7 +57,6 @@ const updateAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
     }
 });
 exports.updateAuthor = updateAuthor;
-//##################
 // DELETE /Authors/:AuthorId
 const deleteAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {

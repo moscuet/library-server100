@@ -15,7 +15,7 @@ if (fs_1.default.existsSync('.env')) {
 else {
     console.log('false');
     logger_1.default.debug('Using .env.example file to supply config environment variables');
-    dotenv_1.default.config({ path: '.env.example' }); // you can delete this after you create your own .env file!
+    dotenv_1.default.config({ path: '.env.example' }); // delete this after you create  .env file!
 }
 exports.ENVIRONMENT = process.env.NODE_ENV;
 console.log('environment:', exports.ENVIRONMENT);

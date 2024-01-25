@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/member-delimiter-style */
 import mongoose, { Document } from 'mongoose'
-
-import * as author from './Author'
 
 export type BookDocument = Document & {
   ISBN: string

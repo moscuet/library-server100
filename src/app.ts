@@ -3,8 +3,8 @@ import lusca from 'lusca'
 import dotenv from 'dotenv'
 import compression from 'compression'
 import cors from 'cors'
-import bodyparser from 'body-parser'
 
+import emailRouter from './routers/email'
 import bookRouter from './routers/book'
 import authorRouter from './routers/author'
 import customerRouter from './routers/customer'
@@ -30,13 +30,15 @@ app.use(express.urlencoded({ extended: true }))
 // Express configuration
 app.set('port', process.env.PORT || 3000)
 app.use(apiContentType)
-// Use common 3rd-party middlewares
+
+//common 3rd-party middlewares
 app.use(compression())
 app.use(express.json())
 app.use(lusca.xframe('SAMEORIGIN'))
 app.use(lusca.xssProtection(true))
 
-// Use movie router
+app.use('/api/send-email', emailRouter)
+app.use('/api/customers', customerRouter)
 app.use('/api/customers', customerRouter)
 app.use('/api/borrows', borrowRouter)
 app.use('/api/books', bookRouter)
@@ -45,9 +47,6 @@ app.use('/api/authors', authorRouter)
 app.use('/api', baseRouter)
 app.use('/', homeRouter)
 
-// Custom API error handler
 app.use(apiErrorHandler)
 
 export default app
-
-//API_URL + "signup", { firstName, lastName, email, phoneNumber, address, password }
