@@ -9,13 +9,13 @@ export const sendEmail = async (
   next: NextFunction
 ) => {
   try {
-    const { email, name, subject, message } = req.body
+    const { email, name, mobile, message } = req.body
 
     // Validation
     if (
       typeof email !== 'string' ||
       typeof name !== 'string' ||
-      typeof subject !== 'string' ||
+      typeof mobile !== 'string' ||
       typeof message !== 'string'
     ) {
       throw new BadRequestError('Invalid input')
@@ -32,8 +32,8 @@ export const sendEmail = async (
     const mailOptions: Mail.Options = {
       from: process.env.MY_EMAIL,
       to: email,
-      subject: subject,
-      text: `From: ${name} message: ${message}`,
+      subject: `${name}, ${mobile}`,
+      text: `${message}`,
     }
 
     await transport.sendMail(mailOptions)

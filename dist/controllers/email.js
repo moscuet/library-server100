@@ -17,10 +17,12 @@ const nodemailer_1 = __importDefault(require("nodemailer"));
 const apiError_1 = require("../helpers/apiError");
 const sendEmail = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { email, name, subject, message } = req.body;
+        const { email, name, mobile, message } = req.body;
         // Validation
-        if (typeof email !== 'string' || typeof name !== 'string' ||
-            typeof subject !== 'string' || typeof message !== 'string') {
+        if (typeof email !== 'string' ||
+            typeof name !== 'string' ||
+            typeof mobile !== 'string' ||
+            typeof message !== 'string') {
             throw new apiError_1.BadRequestError('Invalid input');
         }
         const transport = nodemailer_1.default.createTransport({
@@ -33,8 +35,8 @@ const sendEmail = (req, res, next) => __awaiter(void 0, void 0, void 0, function
         const mailOptions = {
             from: process.env.MY_EMAIL,
             to: email,
-            subject: subject,
-            text: `From: ${name} message: ${message}`,
+            subject: `${name}, ${mobile}`,
+            text: `${message}`,
         };
         yield transport.sendMail(mailOptions);
         res.status(200).json({ message: 'Email sent successfully' });

@@ -1,1 +1,1 @@
-{"version":3,"file":"auth.js","sourceRoot":"","sources":["../../src/config/auth.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,MAAM,EAAE,gBAAgB;CACzB,CAAA"}
+{"version":3,"file":"auth.js","sourceRoot":"","sources":["../../src/config/auth.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACb,MAAM,EAAE,gBAAgB;CACzB,CAAA","sourcesContent":["export default {\n  secret: 'mrahman-secret',\n}\n"]}
