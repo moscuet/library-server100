@@ -40,7 +40,6 @@ const update = (customerId, update) => __awaiter(void 0, void 0, void 0, functio
     return foundCustomer;
 });
 const deleteCustomer = (customerId) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(customerId);
     const foundCustomer = Customer_1.default.findByIdAndDelete(customerId);
     if (!foundCustomer) {
         throw new apiError_1.NotFoundError(`Customer ${customerId} not found`);

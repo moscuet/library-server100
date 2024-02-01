@@ -40,7 +40,6 @@ const update = (authorId, update) => __awaiter(void 0, void 0, void 0, function*
     return foundAuthor;
 });
 const deleteAuthor = (authorId) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(authorId);
     const foundAuthor = Author_1.default.findByIdAndDelete(authorId);
     if (!foundAuthor) {
         throw new apiError_1.NotFoundError(`Author ${authorId} not found`);

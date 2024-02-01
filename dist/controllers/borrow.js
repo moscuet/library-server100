@@ -58,7 +58,6 @@ const updateBorrow = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
     }
 });
 exports.updateBorrow = updateBorrow;
-//##################
 // DELETE /borrows/:borrowId
 const deleteBorrow = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -93,14 +92,11 @@ exports.findById = findById;
 // GET /borrows
 const findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const params = req.query.customerId;
-    console.log('param customerId: ', params);
     if (!params) {
-        console.log('customerId is undefined');
         try {
             res.json(yield borrow_1.default.findAll());
         }
         catch (error) {
-            console.log('error');
             if (error instanceof Error && error.name == 'ValidationError') {
                 next(new apiError_1.BadRequestError('Invalid Request', error));
             }
@@ -114,7 +110,6 @@ const findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
             res.json(yield borrow_1.default.findByCustomerId(params));
         }
         catch (error) {
-            console.log('error');
             if (error instanceof Error && error.name == 'ValidationError') {
                 next(new apiError_1.BadRequestError('Invalid Request', error));
             }

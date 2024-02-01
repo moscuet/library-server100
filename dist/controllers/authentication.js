@@ -25,7 +25,6 @@ const signin = (req, res, next) => __awaiter(void 0, void 0, void 0, function* (
     const { useremail, password } = req.body;
     try {
         const customer = yield Customer_1.default.findOne({ useremail }).exec();
-        //console.log('response customer/signin', customer)
         const pass = customer ? customer.password : '';
         const isValidPassword = yield bcrypt_1.default.compare(password, pass);
         if (!useremail || !password)
@@ -71,7 +70,6 @@ exports.signin = signin;
 // POST /Customers
 const signup = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { firstName, lastName, useremail, phoneNumber, address, password, roles, } = req.body;
-    console.log('data from cont/auth/signup', firstName);
     try {
         const customer = new Customer_1.default({
             _id: (0, uuid_1.v4)(),
@@ -83,18 +81,12 @@ const signup = (req, res, next) => __awaiter(void 0, void 0, void 0, function* (
             password: yield bcrypt_1.default.hash(password, bcrypt_2.default.salt),
             roles,
         });
-        console.log('customer from cont/authentication/signup', customer);
-        // one way to check if email already registered: await User.findOne({ email }).exec() === true;
-        //await CustomerService.create(customer)
         yield customer.save();
         res.set('Access-Control-Allow-Origin', '*');
         res.json(customer);
-        console.log('closing signup');
     }
     catch (error) {
-        console.log('signup error');
         if (error instanceof Error && error.name == 'ValidationError') {
-            console.log('signup error', error.message);
             next(new apiError_1.BadRequestError('Invalid Request', error));
         }
         else if (error instanceof Error && error.message.indexOf('11000')) {
