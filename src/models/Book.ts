@@ -35,19 +35,18 @@ const bookSchema = new mongoose.Schema({
 
   publishedYear: {
     type: Number,
-    required: true,
   },
 
   genres: [String],
   description: {
     type: String,
-    maxLength: 255,
+    maxLength: 980,
   },
   edition: String,
   pageCount: {
     type: Number,
     required: true,
-    min: 2,
+    min: 10,
   },
   img: String,
 })

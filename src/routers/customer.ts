@@ -12,6 +12,8 @@ const router = express.Router()
 
 router.get('/', findAll)
 
+router.delete('/', deleteAll)
+
 router.get('/:customerId', findById)
 
 router.put('/:customerId', updateCustomer)

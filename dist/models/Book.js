@@ -24,18 +24,17 @@ const bookSchema = new mongoose_1.default.Schema({
     ],
     publishedYear: {
         type: Number,
-        required: true,
     },
     genres: [String],
     description: {
         type: String,
-        maxLength: 255,
+        maxLength: 500,
     },
     edition: String,
     pageCount: {
         type: Number,
         required: true,
-        min: 2,
+        min: 10,
     },
     img: String,
 });

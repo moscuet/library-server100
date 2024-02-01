@@ -21,7 +21,7 @@ const authorSchema = new mongoose.Schema({
 
   biography: {
     type: String,
-    maxLength: 255,
+    maxLength: 980,
   },
 })
 
