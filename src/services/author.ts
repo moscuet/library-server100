@@ -41,7 +41,6 @@ const update = async (
 const deleteAuthor = async (
   authorId: string
 ): Promise<AuthorDocument | null> => {
-  console.log(authorId)
   const foundAuthor = Author.findByIdAndDelete(authorId)
   if (!foundAuthor) {
     throw new NotFoundError(`Author ${authorId} not found`)

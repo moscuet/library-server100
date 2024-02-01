@@ -50,7 +50,7 @@ describe('author controller', () => {
   afterAll(async () => {
     await mongodHelper.closeDatabase()
   })
-  // 
+
   it('should create a author', async () => {
     const res = await createAuthor()
     expect(res.status).toBe(200)

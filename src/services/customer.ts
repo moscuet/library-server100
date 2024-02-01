@@ -41,7 +41,6 @@ const update = async (
 const deleteCustomer = async (
   customerId: string
 ): Promise<CustomerDocument | null> => {
-  console.log(customerId)
   const foundCustomer = Customer.findByIdAndDelete(customerId)
   if (!foundCustomer) {
     throw new NotFoundError(`Customer ${customerId} not found`)

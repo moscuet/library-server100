@@ -10,12 +10,12 @@ if (fs.existsSync('.env')) {
 } else {
   console.log('false')
   logger.debug('Using .env.example file to supply config environment variables')
-  dotenv.config({ path: '.env.example' }) // delete this after you create  .env file!
+  dotenv.config({ path: '.env.example' })
 }
 
 export const ENVIRONMENT = process.env.NODE_ENV
 console.log('environment:', ENVIRONMENT)
-const prod = ENVIRONMENT === 'production' // Anything else is treated as 'dev'
+const prod = ENVIRONMENT === 'production'
 
 export const JWT_SECRET = process.env['JWT_SECRET'] as string
 export const MONGODB_URI = (

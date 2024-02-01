@@ -12,11 +12,9 @@ export const findByQuery = async (
   next: NextFunction
 ) => {
   const q1 = req.query.catagory
-  console.log('catagory')
   try {
     res.json(await BookService.findByQuery())
   } catch (error) {
-    console.log('error')
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
     } else {
@@ -59,7 +57,6 @@ export const createBook = async (
     await BookService.create(book)
     res.json(book)
   } catch (error) {
-    //console.log('error from cont/boob/create',error)
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
     } else {
@@ -87,8 +84,6 @@ export const updateBook = async (
     }
   }
 }
-
-//##################
 
 // DELETE /books/:bookId
 export const deleteBook = async (
@@ -134,7 +129,6 @@ export const findAll = async (
   try {
     res.json(await BookService.findAll())
   } catch (error) {
-    console.log('error')
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
     } else {
@@ -150,11 +144,9 @@ export const findAllAndPopulate = async (
   res: Response,
   next: NextFunction
 ) => {
-  console.log('22222222222222 controller')
   try {
     res.json(await BookService.findAllAndPopulate())
   } catch (error) {
-    console.log('error')
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
     } else {

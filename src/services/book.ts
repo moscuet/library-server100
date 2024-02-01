@@ -17,7 +17,6 @@ const findByIdAndPopulate = async (bookId: string): Promise<BookDocument> => {
 
 const findAll = async (): Promise<BookDocument[]> => {
   return Book.find().sort({ title: 1, publishedYear: -1 })
-  // return Book.find().sort({ name: 1, publishedYear: -1 })
 }
 
 const findByQuery = async (): Promise<BookDocument[]> => {
@@ -25,9 +24,7 @@ const findByQuery = async (): Promise<BookDocument[]> => {
 }
 
 const findAllAndPopulate = async (): Promise<BookDocument[]> => {
-  console.log('findall populate service')
   return Book.find().sort({ name: 1, publishedYear: -1 }).populate('authors')
-  // return Book.find().sort({ name: 1, publishedYear: -1 })
 }
 
 const deleteAll = async (): Promise<void> => {

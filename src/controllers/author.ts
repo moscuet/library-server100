@@ -37,7 +37,6 @@ export const updateAuthor = async (
   try {
     const update = req.body
     const authorId = req.params.authorId
-    console.log(authorId)
     const updatedAuthor = await AuthorService.update(authorId, update)
     res.json(updatedAuthor)
   } catch (error) {

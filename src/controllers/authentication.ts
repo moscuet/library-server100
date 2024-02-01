@@ -22,7 +22,6 @@ export const signin = async (
 
   try {
     const customer = await Customer.findOne({ useremail }).exec()
-    //console.log('response customer/signin', customer)
     const pass = customer ? customer.password : ''
     const isValidPassword = await bcrypt.compare(password, pass)
     if (!useremail || !password)
@@ -82,7 +81,6 @@ export const signup = async (
     password,
     roles,
   } = req.body
-  console.log('data from cont/auth/signup', firstName)
   try {
     const customer = new Customer({
       _id: uuidv4(),
@@ -94,18 +92,12 @@ export const signup = async (
       password: await bcrypt.hash(password, bcryptConfig.salt),
       roles,
     })
-    console.log('customer from cont/authentication/signup', customer)
-    // one way to check if email already registered: await User.findOne({ email }).exec() === true;
 
-    //await CustomerService.create(customer)
     await customer.save()
     res.set('Access-Control-Allow-Origin', '*')
     res.json(customer)
-    console.log('closing signup')
   } catch (error) {
-    console.log('signup error')
     if (error instanceof Error && error.name == 'ValidationError') {
-      console.log('signup error', error.message)
       next(new BadRequestError('Invalid Request', error))
     } else if (error instanceof Error && error.message.indexOf('11000')) {
       res.status(401).json({

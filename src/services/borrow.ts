@@ -48,7 +48,6 @@ const update = async (
 const deleteBorrow = async (
   borrowId: string
 ): Promise<BorrowDocument | null> => {
-  console.log(borrowId)
   const foundBorrow = Borrow.findByIdAndDelete(borrowId)
   if (!foundBorrow) {
     throw new NotFoundError(`Borrow ${borrowId} not found`)

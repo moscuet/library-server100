@@ -18,11 +18,6 @@ export const updateCustomer = async (
       address: req.body.address,
     }
     const customerId = req.params.customerId
-    console.log(
-      'from controller/customers/updatecustomer rep.body && id:',
-      update,
-      customerId
-    )
 
     const updatedCustomer = await CustomerService.update(customerId, update)
     res.json(updatedCustomer)
@@ -53,7 +48,6 @@ export const deleteCustomer = async (
   }
 }
 
-// GET /Customers/:customerId
 // GET /Authors/:AuthorId
 export const findById = async (
   req: Request,
@@ -77,11 +71,9 @@ export const findAll = async (
   res: Response,
   next: NextFunction
 ) => {
-  console.log('hello')
   try {
     res.json(await CustomerService.findAll())
   } catch (error) {
-    console.log('error')
     if (error instanceof Error && error.name == 'ValidationError') {
       next(new BadRequestError('Invalid Request', error))
     } else {
