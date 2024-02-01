@@ -26,15 +26,12 @@ const findByIdAndPopulate = (bookId) => __awaiter(void 0, void 0, void 0, functi
 });
 const findAll = () => __awaiter(void 0, void 0, void 0, function* () {
     return Book_1.default.find().sort({ title: 1, publishedYear: -1 });
-    // return Book.find().sort({ name: 1, publishedYear: -1 })
 });
 const findByQuery = () => __awaiter(void 0, void 0, void 0, function* () {
     return Book_1.default.find().sort({ title: 1, publishedYear: -1 });
 });
 const findAllAndPopulate = () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('findall populate service');
     return Book_1.default.find().sort({ name: 1, publishedYear: -1 }).populate('authors');
-    // return Book.find().sort({ name: 1, publishedYear: -1 })
 });
 const deleteAll = () => __awaiter(void 0, void 0, void 0, function* () {
     yield Book_1.default.deleteMany({});

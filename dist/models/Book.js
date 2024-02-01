@@ -28,7 +28,7 @@ const bookSchema = new mongoose_1.default.Schema({
     genres: [String],
     description: {
         type: String,
-        maxLength: 500,
+        maxLength: 980,
     },
     edition: String,
     pageCount: {

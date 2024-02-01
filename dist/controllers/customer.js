@@ -26,7 +26,6 @@ const updateCustomer = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
             address: req.body.address,
         };
         const customerId = req.params.customerId;
-        console.log('from controller/customers/updatecustomer rep.body && id:', update, customerId);
         const updatedCustomer = yield customer_1.default.update(customerId, update);
         res.json(updatedCustomer);
     }
@@ -56,7 +55,6 @@ const deleteCustomer = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.deleteCustomer = deleteCustomer;
-// GET /Customers/:customerId
 // GET /Authors/:AuthorId
 const findById = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -74,12 +72,10 @@ const findById = (req, res, next) => __awaiter(void 0, void 0, void 0, function*
 exports.findById = findById;
 //GET /Customers
 const findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('hello');
     try {
         res.json(yield customer_1.default.findAll());
     }
     catch (error) {
-        console.log('error');
         if (error instanceof Error && error.name == 'ValidationError') {
             next(new apiError_1.BadRequestError('Invalid Request', error));
         }

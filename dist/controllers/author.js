@@ -43,7 +43,6 @@ const updateAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
     try {
         const update = req.body;
         const authorId = req.params.authorId;
-        console.log(authorId);
         const updatedAuthor = yield author_1.default.update(authorId, update);
         res.json(updatedAuthor);
     }

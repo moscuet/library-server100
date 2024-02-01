@@ -16,7 +16,7 @@ const authorSchema = new mongoose_1.default.Schema({
     },
     biography: {
         type: String,
-        maxLength: 255,
+        maxLength: 980,
     },
 });
 exports.default = mongoose_1.default.model('Author', authorSchema);

@@ -19,12 +19,10 @@ const apiError_1 = require("../helpers/apiError");
 // POST /books
 const findByQuery = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const q1 = req.query.catagory;
-    console.log('catagory');
     try {
         res.json(yield book_1.default.findByQuery());
     }
     catch (error) {
-        console.log('error');
         if (error instanceof Error && error.name == 'ValidationError') {
             next(new apiError_1.BadRequestError('Invalid Request', error));
         }
@@ -53,7 +51,6 @@ const createBook = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         res.json(book);
     }
     catch (error) {
-        //console.log('error from cont/boob/create',error)
         if (error instanceof Error && error.name == 'ValidationError') {
             next(new apiError_1.BadRequestError('Invalid Request', error));
         }
@@ -81,7 +78,6 @@ const updateBook = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
     }
 });
 exports.updateBook = updateBook;
-//##################
 // DELETE /books/:bookId
 const deleteBook = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -119,7 +115,6 @@ const findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
         res.json(yield book_1.default.findAll());
     }
     catch (error) {
-        console.log('error');
         if (error instanceof Error && error.name == 'ValidationError') {
             next(new apiError_1.BadRequestError('Invalid Request', error));
         }
@@ -131,12 +126,10 @@ const findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
 exports.findAll = findAll;
 //
 const findAllAndPopulate = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('22222222222222 controller');
     try {
         res.json(yield book_1.default.findAllAndPopulate());
     }
     catch (error) {
-        console.log('error');
         if (error instanceof Error && error.name == 'ValidationError') {
             next(new apiError_1.BadRequestError('Invalid Request', error));
         }

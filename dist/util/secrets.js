@@ -15,11 +15,11 @@ if (fs_1.default.existsSync('.env')) {
 else {
     console.log('false');
     logger_1.default.debug('Using .env.example file to supply config environment variables');
-    dotenv_1.default.config({ path: '.env.example' }); // delete this after you create  .env file!
+    dotenv_1.default.config({ path: '.env.example' });
 }
 exports.ENVIRONMENT = process.env.NODE_ENV;
 console.log('environment:', exports.ENVIRONMENT);
-const prod = exports.ENVIRONMENT === 'production'; // Anything else is treated as 'dev'
+const prod = exports.ENVIRONMENT === 'production';
 exports.JWT_SECRET = process.env['JWT_SECRET'];
 exports.MONGODB_URI = (prod ? process.env['MONGODB_URI'] : process.env['MONGODB_URI']);
 if (!exports.JWT_SECRET) {

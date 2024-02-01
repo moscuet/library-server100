@@ -45,7 +45,6 @@ const update = (borrowId, update) => __awaiter(void 0, void 0, void 0, function*
     return foundBorrow;
 });
 const deleteBorrow = (borrowId) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(borrowId);
     const foundBorrow = Borrow_1.default.findByIdAndDelete(borrowId);
     if (!foundBorrow) {
         throw new apiError_1.NotFoundError(`Borrow ${borrowId} not found`);
