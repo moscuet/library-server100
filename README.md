@@ -1,12 +1,49 @@
-# Library-Backend-Typescript-Project
-### RestApi Typescript, Node, Express, MongoDB, Jest /Supertest
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=ts,nodejs,express,mongodb,jest" />
+  <br/>
+  <a href="https://library-server400.herokuapp.com/api"><kbd>🟢 Live API</kbd></a>
+  <br/> 
+  <span>Library Backend</span> l <span>REST API</span>
+</p>
 
-##### deployed: https://library-server400.herokuapp.com/api
-##### get all books: https://library-server400.herokuapp.com/api/books 
-##### get all books with data population: https://library-server400.herokuapp.com/api/books/all 
+<br/> <br/> 
 
+# library-server100
 
-###  endpoints: 
+This backend application, developed for book borrowing services, harnesses the power of TypeScript, Node.js, Express, and MongoDB. It features an open API for library management, enabling functionalities such as adding, updating, deleting, and retrieving data of author, book and borrowing. For testing, the application utilizes Jest and Supertest to ensure high functionality and reliability.
+
+Check out the live API at [Library Server API](https://library-server100.up.railway.app/)
+
+Frondend Library app powered with library-server100 API:&nbsp;   [Github Repo](https://github.com/moscuet/Lending-Loft) &nbsp; [Live Front End](https://zealous-galileo-0290aa.netlify.app/ )
+
+## 🔥 Features
+
+- **CRUD for Books & Authors**: Manage book and author data with full create, read, update, and delete capabilities.
+- **Borrowing & Returns**: Track and manage the lending process efficiently.
+- **Secure Login**: Protect user data with JWT authentication.
+- **Testing Suite**: Ensure reliability with Jest and Supertest.
+
+<br/>
+
+## 🛠 Tech Stack
+
+- **Backend**: Node.js, Express, MongoDB, Mongoose
+- **Security**: JWT, Bcrypt
+- **Testing**: Jest, Supertest
+- **Utilities**: Nodemailer, Winston, dotenv
+- **Dev Tools**: TypeScript, ESLint, Prettier, Nodemon
+
+<br/>
+
+## 📖 Entity Relationship Diagram (ERD)
+
+![Entity Relationship Diagram (ERD)](https://user-images.githubusercontent.com/51766137/170583219-af113de7-46b8-4e48-8967-2c51de649452.png)
+
+For a detailed view, check the [ERD documentation](https://github.com/moscuet/library-server100/files/8782220/Online.Bookstore.pdf).
+
+<br/>
+
+## 🚀 Endpoints
 
 
 ```
@@ -18,17 +55,6 @@ delete all book: https://library-server400.herokuapp.com/api/books/all
 post new book: https://library-server400.herokuapp.com/api/books
 
 ```
-
-### Entity Relationship Diagram (ERD)
-
-
-
-![Screenshot 2022-05-27 at 0 27 32](https://user-images.githubusercontent.com/51766137/170583219-af113de7-46b8-4e48-8967-2c51de649452.png)
-
-
-
-[Entity Relationship Diagram (ERD)](https://github.com/moscuet/library-server100/files/8782220/Online.Bookstore.pdf)
-
 
 ## Prerequisites
 1. Install mongodb
@@ -43,25 +69,6 @@ post new book: https://library-server400.herokuapp.com/api/books
 3. Install dependencies: `yarn`
 4. Use this command for development mode: `yarn run watch`
 5. If you need to customize your env, take a look at `secrets.ts` file
-
-## Requirements
-
-Below are the steps that you need to finish in order to finish this module
-
-
-1. Explore the code base, start with `server.ts`
-2. Create all the mongoose schema for your ERD
-3. Create CRUD endpoints for all the schema
-4. Separate the routers and controller, controller goes into the controller folders. Controllers only handles request and response
-5. Create more controller for your app if needed. Eg: borrow books, add product to order
-6. For business logic like saving data to database, filtering, searching or updating, these are services and goes into services folder
-7. Add authentication middleware using passport, google and jwt strategy
-8. Add tests for your controllers and services. Remember to create the jwt token for your tests, because if your controller is protected, then the test should send the token also
-9. Create a client folder in the project root, you will set up your react frontend in here. If there's a problem running the react app after install, try creating a `.env` file inside `client` folder. And put this line in there: `SKIP_PREFLIGHT_CHECK=true`
-
-
-// "test": "jest --forceExit --detectOpenHandles --coverage --verbose false",
-
 
 ### mongodb setup in local env
 
