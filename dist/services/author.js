@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Author_1 = __importDefault(require("../models/Author"));
 const apiError_1 = require("../helpers/apiError");
+const Book_1 = __importDefault(require("../models/Book"));
 const create = (author) => __awaiter(void 0, void 0, void 0, function* () {
     return author.save();
 });
@@ -40,9 +41,14 @@ const update = (authorId, update) => __awaiter(void 0, void 0, void 0, function*
     return foundAuthor;
 });
 const deleteAuthor = (authorId) => __awaiter(void 0, void 0, void 0, function* () {
-    const foundAuthor = Author_1.default.findByIdAndDelete(authorId);
+    const booksWithAuthor = yield Book_1.default.find({ authors: authorId });
+    console.log('booksWithAuthor#', booksWithAuthor);
+    if (booksWithAuthor.length > 0) {
+        throw new Error(`Cannot delete author ${authorId} as they are associated with one or more books.`);
+    }
+    const foundAuthor = yield Author_1.default.findByIdAndDelete(authorId);
     if (!foundAuthor) {
-        throw new apiError_1.NotFoundError(`Author ${authorId} not found`);
+        throw new Error(`Author ${authorId} not found`);
     }
     return foundAuthor;
 });

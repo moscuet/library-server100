@@ -102,7 +102,6 @@ const findAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.findAll = findAll;
-// Delete All Author
 const deleteAll = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield author_1.default.deleteAll();

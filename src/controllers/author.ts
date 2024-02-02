@@ -100,8 +100,6 @@ export const findAll = async (
   }
 }
 
-// Delete All Author
-
 export const deleteAll = async (
   req: Request,
   res: Response,
