@@ -1,5 +1,6 @@
 import Book, { BookDocument } from '../models/Book'
-import { NotFoundError } from '../helpers/apiError'
+import { BadRequestError, NotFoundError } from '../helpers/apiError'
+import Borrow from '../models/Borrow'
 
 const create = async (book: BookDocument): Promise<BookDocument> => {
   return book.save()
@@ -47,12 +48,18 @@ const update = async (
 }
 
 const deleteBook = async (bookId: string): Promise<BookDocument | null> => {
-  const foundBook = Book.findByIdAndDelete(bookId)
+  const borrowCount = await Borrow.countDocuments({ bookId })
 
+  if (borrowCount > 0) {
+    throw new BadRequestError(
+      `Cannot delete book ${bookId} as it is borrowed by customers.`
+    )
+  }
+
+  const foundBook = await Book.findByIdAndDelete(bookId)
   if (!foundBook) {
     throw new NotFoundError(`Book ${bookId} not found`)
   }
-
   return foundBook
 }
 

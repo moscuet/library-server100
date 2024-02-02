@@ -35,7 +35,6 @@ const update = async (
   if (!foundAuthor) {
     throw new NotFoundError(`Author ${authorId} not found`)
   }
-
   return foundAuthor
 }
 
@@ -43,10 +42,9 @@ const deleteAuthor = async (
   authorId: string
 ): Promise<AuthorDocument | null> => {
   const booksWithAuthor = await Book.find({ authors: authorId })
-  console.log('booksWithAuthor#', booksWithAuthor)
   if (booksWithAuthor.length > 0) {
     throw new Error(
-      `Cannot delete author ${authorId} as they are associated with one or more books.`
+      `Cannot delete author ${authorId} is associated with one or more books.`
     )
   }
   const foundAuthor = await Author.findByIdAndDelete(authorId)

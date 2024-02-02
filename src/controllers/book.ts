@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 
 import Book from '../models/Book'
 import BookService from '../services/book'
-import { BadRequestError } from '../helpers/apiError'
+import { BadRequestError, NotFoundError } from '../helpers/apiError'
 
 // POST /books
 
@@ -95,8 +95,8 @@ export const deleteBook = async (
     await BookService.deleteBook(req.params.bookId)
     res.status(204).end()
   } catch (error) {
-    if (error instanceof Error && error.name == 'ValidationError') {
-      next(new BadRequestError('Invalid Request', error))
+    if (error instanceof BadRequestError || error instanceof NotFoundError) {
+      res.status(error.statusCode).send({ message: error.message })
     } else {
       next(error)
     }
