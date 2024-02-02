@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Book_1 = __importDefault(require("../models/Book"));
 const apiError_1 = require("../helpers/apiError");
+const Borrow_1 = __importDefault(require("../models/Borrow"));
 const create = (book) => __awaiter(void 0, void 0, void 0, function* () {
     return book.save();
 });
@@ -46,7 +47,11 @@ const update = (bookId, update) => __awaiter(void 0, void 0, void 0, function* (
     return foundBook;
 });
 const deleteBook = (bookId) => __awaiter(void 0, void 0, void 0, function* () {
-    const foundBook = Book_1.default.findByIdAndDelete(bookId);
+    const borrowCount = yield Borrow_1.default.countDocuments({ bookId });
+    if (borrowCount > 0) {
+        throw new apiError_1.BadRequestError(`Cannot delete book ${bookId} as it is borrowed by customers.`);
+    }
+    const foundBook = yield Book_1.default.findByIdAndDelete(bookId);
     if (!foundBook) {
         throw new apiError_1.NotFoundError(`Book ${bookId} not found`);
     }

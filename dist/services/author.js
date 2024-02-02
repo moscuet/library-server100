@@ -42,7 +42,6 @@ const update = (authorId, update) => __awaiter(void 0, void 0, void 0, function*
 });
 const deleteAuthor = (authorId) => __awaiter(void 0, void 0, void 0, function* () {
     const booksWithAuthor = yield Book_1.default.find({ authors: authorId });
-    console.log('booksWithAuthor#', booksWithAuthor);
     if (booksWithAuthor.length > 0) {
         throw new Error(`Cannot delete author ${authorId} as they are associated with one or more books.`);
     }

@@ -30,10 +30,12 @@ const createAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
     }
     catch (error) {
         if (error instanceof Error && error.name == 'ValidationError') {
+            console.log('#########!!!!!!');
             next(new apiError_1.BadRequestError('Invalid Request', error));
         }
         else {
             next(error);
+            console.log('#########""22222222222');
         }
     }
 });
@@ -63,8 +65,8 @@ const deleteAuthor = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         res.status(204).end();
     }
     catch (error) {
-        if (error instanceof Error && error.name == 'ValidationError') {
-            next(new apiError_1.BadRequestError('Invalid Request', error));
+        if (error instanceof apiError_1.BadRequestError || error instanceof apiError_1.NotFoundError) {
+            res.status(error.statusCode).send({ message: error.message });
         }
         else {
             next(error);
