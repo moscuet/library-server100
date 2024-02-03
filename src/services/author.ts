@@ -1,5 +1,5 @@
 import Author, { AuthorDocument } from '../models/Author'
-import { NotFoundError } from '../helpers/apiError'
+import { BadRequestError, NotFoundError } from '../helpers/apiError'
 import { result } from 'lodash'
 import Book from '../models/Book'
 
@@ -43,13 +43,13 @@ const deleteAuthor = async (
 ): Promise<AuthorDocument | null> => {
   const booksWithAuthor = await Book.find({ authors: authorId })
   if (booksWithAuthor.length > 0) {
-    throw new Error(
-      `Cannot delete author ${authorId} is associated with one or more books.`
+    throw new BadRequestError(
+      `Cannot remove author with id ${authorId}  as he/she associated with at least one book `
     )
   }
   const foundAuthor = await Author.findByIdAndDelete(authorId)
   if (!foundAuthor) {
-    throw new Error(`Author ${authorId} not found`)
+    throw new NotFoundError(`Author with id  ${authorId} not found`)
   }
   return foundAuthor
 }

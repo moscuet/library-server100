@@ -52,13 +52,13 @@ const deleteBook = async (bookId: string): Promise<BookDocument | null> => {
 
   if (borrowCount > 0) {
     throw new BadRequestError(
-      `Cannot delete book ${bookId} as it is borrowed by customers.`
+      `Cannot delete book with ${bookId} as it is borrowed by customer.`
     )
   }
 
   const foundBook = await Book.findByIdAndDelete(bookId)
   if (!foundBook) {
-    throw new NotFoundError(`Book ${bookId} not found`)
+    throw new NotFoundError(`Book with id ${bookId} not found.`)
   }
   return foundBook
 }

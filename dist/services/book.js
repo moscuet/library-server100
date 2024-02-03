@@ -49,11 +49,11 @@ const update = (bookId, update) => __awaiter(void 0, void 0, void 0, function* (
 const deleteBook = (bookId) => __awaiter(void 0, void 0, void 0, function* () {
     const borrowCount = yield Borrow_1.default.countDocuments({ bookId });
     if (borrowCount > 0) {
-        throw new apiError_1.BadRequestError(`Cannot delete book ${bookId} as it is borrowed by customers.`);
+        throw new apiError_1.BadRequestError(`Cannot delete book with ${bookId} as it is borrowed by customer.`);
     }
     const foundBook = yield Book_1.default.findByIdAndDelete(bookId);
     if (!foundBook) {
-        throw new apiError_1.NotFoundError(`Book ${bookId} not found`);
+        throw new apiError_1.NotFoundError(`Book with id ${bookId} not found.`);
     }
     return foundBook;
 });

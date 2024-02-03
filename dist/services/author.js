@@ -43,11 +43,11 @@ const update = (authorId, update) => __awaiter(void 0, void 0, void 0, function*
 const deleteAuthor = (authorId) => __awaiter(void 0, void 0, void 0, function* () {
     const booksWithAuthor = yield Book_1.default.find({ authors: authorId });
     if (booksWithAuthor.length > 0) {
-        throw new Error(`Cannot delete author ${authorId} as they are associated with one or more books.`);
+        throw new apiError_1.BadRequestError(`Cannot remove author with id ${authorId}  as he/she associated with at least one book `);
     }
     const foundAuthor = yield Author_1.default.findByIdAndDelete(authorId);
     if (!foundAuthor) {
-        throw new Error(`Author ${authorId} not found`);
+        throw new apiError_1.NotFoundError(`Author with id  ${authorId} not found`);
     }
     return foundAuthor;
 });
